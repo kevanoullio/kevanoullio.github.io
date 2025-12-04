@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" fill="none">
+  <rect width="400" height="225" fill="#1a1a2e"/>
+  <rect x="20" y="20" width="360" height="185" fill="#16213e" rx="4"/>
+  <text x="30" y="45" fill="#f472b6" font-family="monospace" font-size="12">$ ./memory_manager</text>
+  <text x="30" y="70" fill="#e2e8f0" font-family="monospace" font-size="12">╭─────────────────────────────────╮</text>
+  <text x="30" y="90" fill="#e2e8f0" font-family="monospace" font-size="12">│  C Memory Manager v1.0          │</text>
+  <text x="30" y="110" fill="#e2e8f0" font-family="monospace" font-size="12">╰─────────────────────────────────╯</text>
+  <text x="30" y="135" fill="#4ade80" font-family="monospace" font-size="12">Memory allocated: 1024 bytes</text>
+  <text x="30" y="155" fill="#fbbf24" font-family="monospace" font-size="12">Heap usage: ████████░░ 80%</text>
+  <text x="30" y="175" fill="#3b82f6" font-family="monospace" font-size="12">Stack: 256KB | Heap: 2MB</text>
+  <text x="30" y="195" fill="#4ade80" font-family="monospace" font-size="12">&gt; Status: Running optimally</text>
+  <rect x="270" y="188" width="8" height="2" fill="#4ade80">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+</svg>
