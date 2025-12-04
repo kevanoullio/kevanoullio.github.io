@@ -37,15 +37,23 @@ const colorThemeConfig: Record<ColorTheme, { primary: string; accent: string }> 
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('theme') as Theme) || 'system'
+    try {
+      if (typeof window !== 'undefined') {
+        return (localStorage.getItem('theme') as Theme) || 'system'
+      }
+    } catch {
+      // localStorage may be unavailable in private browsing mode
     }
     return 'system'
   })
 
   const [colorTheme, setColorTheme] = useState<ColorTheme>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('colorTheme') as ColorTheme) || 'blue'
+    try {
+      if (typeof window !== 'undefined') {
+        return (localStorage.getItem('colorTheme') as ColorTheme) || 'blue'
+      }
+    } catch {
+      // localStorage may be unavailable in private browsing mode
     }
     return 'blue'
   })
@@ -66,7 +74,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.classList.add(theme)
     }
 
-    localStorage.setItem('theme', theme)
+    try {
+      localStorage.setItem('theme', theme)
+    } catch {
+      // localStorage may be unavailable
+    }
   }, [theme])
 
   useEffect(() => {
@@ -77,7 +89,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     root.style.setProperty('--accent', config.accent)
     root.style.setProperty('--ring', config.primary)
 
-    localStorage.setItem('colorTheme', colorTheme)
+    try {
+      localStorage.setItem('colorTheme', colorTheme)
+    } catch {
+      // localStorage may be unavailable
+    }
   }, [colorTheme])
 
   // Listen for system theme changes

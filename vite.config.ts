@@ -11,5 +11,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  // Base path is '/' for GitHub Pages user/org sites (username.github.io)
+  // For project sites, use '/<repo-name>/'
   base: '/',
 })

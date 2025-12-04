@@ -64,7 +64,7 @@ const DropdownMenuContent = ({ align = "center", children, className }: Dropdown
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
+      if (ref.current && event.target && !ref.current.contains(event.target as Node)) {
         context.setOpen(false)
       }
     }
