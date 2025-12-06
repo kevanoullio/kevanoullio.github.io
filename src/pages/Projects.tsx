@@ -2,7 +2,7 @@ import { ProjectCard } from "@/components/ProjectCard"
 
 const projects = [
   {
-    title: "Apples to Apples AI Agent",
+    title: "Apples to Apples",
     description: "An AI Agent and fully functional Apples to Apples game.",
     image: "/.svg",
     categories: ["AI", "Machine Learning", "Game Development"],
@@ -10,7 +10,7 @@ const projects = [
     repoUrl: "https://github.com/kevanoullio/apples-to-apples-agent",
   },
   {
-    title: "House of Tutor Mobile App",
+    title: "House of Tutor",
     description: "A tutoring mobile app developed for Android.",
     image: "/.svg",
     categories: ["Education", "Mobile App", "Android Development"],
@@ -18,10 +18,10 @@ const projects = [
     repoUrl: "https://github.com/kevanoullio/house-of-tutor-android-app",
   },
   {
-    title: "Vintique Sound responsive website prototype",
+    title: "Vintique Sound",
     description: "A responsive static website prototype for my music business.",
     image: "/.svg",
-    categories: ["Music",  "Website", "Webapp"],
+    categories: ["Music",  "Website"],
     technologies: ["HTML", "JavaScript", "CSS"],
     repoUrl: "https://github.com/kevanoullio/vintique-sound-website-prototype",
   }
