@@ -12,26 +12,36 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
-const colorThemeConfig: Record<ColorTheme, { primary: string; accent: string }> = {
+const colorThemeConfig: Record<ColorTheme, { primary: string; accent: string; secondary: string; muted: string }> = {
   blue: {
-    primary: "221.2 83.2% 53.3%",
-    accent: "262.1 83.3% 57.8%",
+    primary: "0.549 0.194 262.5",
+    accent: "0.582 0.223 306.3",
+    secondary: "0.549 0.194 262.5",
+    muted: "0.85 0.036 262.5",
   },
   purple: {
-    primary: "262.1 83.3% 57.8%",
-    accent: "330.4 81.2% 60.4%",
+    primary: "0.582 0.223 306.3",
+    accent: "0.583 0.214 328.3",
+    secondary: "0.582 0.223 306.3",
+    muted: "0.85 0.052 306.3",
   },
   green: {
-    primary: "142.1 76.2% 36.3%",
-    accent: "199.4 95.5% 53.8%",
+    primary: "0.515 0.158 142.5",
+    accent: "0.604 0.213 199.5",
+    secondary: "0.515 0.158 142.5",
+    muted: "0.85 0.046 142.5",
   },
   orange: {
-    primary: "24.6 95% 53.1%",
-    accent: "38.2 92% 50.2%",
+    primary: "0.623 0.214 41.3",
+    accent: "0.628 0.21 53.2",
+    secondary: "0.623 0.214 41.3",
+    muted: "0.88 0.063 41.3",
   },
   rose: {
-    primary: "346.8 77.2% 49.8%",
-    accent: "262.1 83.3% 57.8%",
+    primary: "0.566 0.213 10.2",
+    accent: "0.582 0.223 306.3",
+    secondary: "0.566 0.213 10.2",
+    muted: "0.85 0.062 10.2",
   },
 }
 
@@ -87,7 +97,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     root.style.setProperty("--primary", config.primary)
     root.style.setProperty("--accent", config.accent)
+    root.style.setProperty("--secondary", config.secondary)
+    root.style.setProperty("--muted", config.muted)
     root.style.setProperty("--ring", config.primary)
+    root.style.setProperty("--sidebar-primary", config.primary)
+    root.style.setProperty("--sidebar-accent", config.accent)
 
     try {
       localStorage.setItem("colorTheme", colorTheme)

@@ -19,7 +19,7 @@ export function Home() {
         </div>
         <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
           Hi, I'm{' '}
-          <span className="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Kevin Ulliac
           </span>
         </h1>

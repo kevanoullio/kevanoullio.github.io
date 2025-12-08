@@ -62,7 +62,7 @@ export function ThemeToggle() {
           <Palette className="mr-2 h-4 w-4" />
           Color Theme
         </DropdownMenuLabel>
-        <div className="flex gap-1 p-2">
+        <div className="flex gap-2 p-2">
           {colorThemes.map((ct) => (
             <button
               key={ct.value}
