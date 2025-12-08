@@ -55,7 +55,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     } catch {
       // localStorage may be unavailable in private browsing mode
     }
-    return "blue"
+    return "blue" // blue is the default color
   })
 
   useEffect(() => {

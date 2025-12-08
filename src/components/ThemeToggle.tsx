@@ -1,6 +1,5 @@
 import { Sun, Moon, Monitor, Palette } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -49,12 +48,12 @@ export function ThemeToggle() {
           {theme === "light" && <span className="ml-auto">✓</span>}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <Sun className="mr-2 h-4 w-4" />
+          <Moon className="mr-2 h-4 w-4" />
           Dark
           {theme === "dark" && <span className="ml-auto">✓</span>}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          <Sun className="mr-2 h-4 w-4" />
+          <Monitor className="mr-2 h-4 w-4" />
           System
           {theme === "system" && <span className="ml-auto">✓</span>}
         </DropdownMenuItem>
