@@ -6,7 +6,8 @@ const projects = [
     description: "An AI Agent and fully functional Apples to Apples game.",
     image: "/.svg",
     categories: ["AI", "Machine Learning", "Game Development"],
-    technologies: ["Python"],
+    technologies: ["Python", "Word2vec", "Keras"],
+    role: "Researcher and Developer (team of 3)",
     repoUrl: "https://github.com/kevanoullio/apples-to-apples-agent",
   },
   {
@@ -15,14 +16,16 @@ const projects = [
     image: "/.svg",
     categories: ["Education", "Mobile App", "Android Development"],
     technologies: ["Kotlin", "Gradle", "SQLite/Room", "Firebase"],
+    role: "Scrum Master and Software Architect (team of 5)",
     repoUrl: "https://github.com/kevanoullio/house-of-tutor-android-app",
   },
   {
     title: "Vintique Sound",
     description: "A responsive static website prototype for my music business.",
     image: "/.svg",
-    categories: ["Music",  "Website"],
+    categories: ["Website", "Music", "Audio Engineering"],
     technologies: ["HTML", "JavaScript", "CSS"],
+    role: "Sole Developer (all code)",
     repoUrl: "https://github.com/kevanoullio/vintique-sound-website-prototype",
   }
 ]
