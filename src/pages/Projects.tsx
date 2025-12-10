@@ -12,7 +12,7 @@ const projects = [
   },
   {
     title: "House of Tutor",
-    description: "A tutoring mobile app developed for Android.",
+    description: "A tutoring mobile app for tutors and students, developed for Android.",
     image: "/.svg",
     categories: ["Education", "Mobile App", "Android Development"],
     technologies: ["Kotlin", "Gradle", "SQLite/Room", "Firebase"],

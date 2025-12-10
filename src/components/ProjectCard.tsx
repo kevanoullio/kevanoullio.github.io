@@ -35,35 +35,39 @@ export function ProjectCard({ title, description, image, categories = [], techno
           </div>
         )}
       </CardHeader>
-      <CardContent className="flex-1 flex flex-col gap-2">
-        {categories.length > 0 && (
-          <div>
-            <div className="mb-1 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Categories</div>
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <span
-                  key={category}
-                  className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary"
-                >
-                  {category}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-        {technologies.length > 0 && (
-          <div>
-            <div className="mb-1 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Technologies</div>
-            <div className="flex flex-wrap gap-2">
-              {technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+      <CardContent className="flex-1 flex flex-col">
+        {(categories.length > 0 || technologies.length > 0) && (
+          <div className="border-t border-border pt-4 flex flex-col gap-4">
+            {categories.length > 0 && (
+              <div className="flex flex-col items-start">
+                <div className="mb-1 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Categories</div>
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((category) => (
+                    <span
+                      key={category}
+                      className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary"
+                    >
+                      {category}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            {technologies.length > 0 && (
+              <div className="flex flex-col items-start">
+                <div className="mb-1 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Technologies</div>
+                <div className="flex flex-wrap gap-2">
+                  {technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </CardContent>
