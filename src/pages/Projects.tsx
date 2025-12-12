@@ -33,20 +33,23 @@ const projects = [
 export function Projects() {
   return (
     <div className="flex flex-col">
+      <section>
+        <div className="mb-12 text-center">
+          <h1 className="mb-4 text-4xl font-bold">My Projects</h1>
+          <p className="mx-auto max-w-2xl text-muted-foreground">
+            Here are some of the projects I've worked on. Each one represents a unique challenge
+            and learning experience. Click on any project to explore its code on GitHub.
+          </p>
+        </div>
+      </section>
 
-      <div className="mb-12 text-center">
-        <h1 className="mb-4 text-4xl font-bold">My Projects</h1>
-        <p className="mx-auto max-w-2xl text-muted-foreground">
-          Here are some of the projects I've worked on. Each one represents a unique challenge
-          and learning experience. Click on any project to explore its code on GitHub.
-        </p>
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} {...project} />
-        ))}
-      </div>
+      <section className="mb-8">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <ProjectCard key={project.title} {...project} />
+          ))}
+        </div>
+      </section>
 
     </div>
   )

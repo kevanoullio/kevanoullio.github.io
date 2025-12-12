@@ -9,13 +9,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useTheme } from "@/context/ThemeContext"
+import { colorThemeConfig } from "@/context/ThemeContext"
 
 const colorThemes = [
-  { name: "Blue", value: "blue" as const, color: "bg-blue-500" },
-  { name: "Purple", value: "purple" as const, color: "bg-purple-500" },
-  { name: "Green", value: "green" as const, color: "bg-green-500" },
-  { name: "Orange", value: "orange" as const, color: "bg-orange-500" },
-  { name: "Rose", value: "rose" as const, color: "bg-rose-500" },
+  { name: "Blue", value: "blue" as const },
+  { name: "Purple", value: "purple" as const },
+  { name: "Green", value: "green" as const },
+  { name: "Tropical Sunrise", value: "tropical_sunrise" as const },
+  { name: "Rose", value: "rose" as const },
 ]
 
 export function ThemeToggle() {
@@ -35,7 +36,12 @@ export function ThemeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label="Toggle theme">
+        <Button
+          variant="outline"
+          size="icon"
+          aria-label="Toggle theme"
+          className="bg-background text-foreground border-border hover:border-primary/60 dark:border-input dark:hover:border-primary/60 hover:bg-muted hover:text-primary"
+        >
           {getCurrentIcon()}
         </Button>
       </DropdownMenuTrigger>
@@ -63,17 +69,24 @@ export function ThemeToggle() {
           Color Theme
         </DropdownMenuLabel>
         <div className="flex gap-2 p-2">
-          {colorThemes.map((ct) => (
-            <button
-              key={ct.value}
-              onClick={() => setColorTheme(ct.value)}
-              className={`h-6 w-6 rounded-full ${ct.color} transition-transform hover:scale-110 ${
-                colorTheme === ct.value ? "ring-2 ring-offset-2 ring-offset-background ring-foreground" : ""
-              }`}
-              title={ct.name}
-              aria-label={`Set ${ct.name} color theme`}
-            />
-          ))}
+          {colorThemes.map((ct) => {
+            const config = colorThemeConfig[ct.value]
+            const style = {
+              backgroundColor: `oklch(${config.primary})`,
+            }
+            return (
+              <button
+                key={ct.value}
+                onClick={() => setColorTheme(ct.value)}
+                className={`h-6 w-6 rounded-full transition-transform hover:scale-110 ${
+                  colorTheme === ct.value ? "ring-2 ring-offset-2 ring-offset-background ring-foreground" : ""
+                }`}
+                style={style}
+                title={ct.name}
+                aria-label={`Set ${ct.name} color theme`}
+              />
+            )
+          })}
         </div>
       </DropdownMenuContent>
     </DropdownMenu>
