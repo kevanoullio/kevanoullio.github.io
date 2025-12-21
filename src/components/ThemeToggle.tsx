@@ -15,7 +15,7 @@ const colorThemes = [
   { name: "Blue", value: "blue" as const },
   { name: "Purple", value: "purple" as const },
   { name: "Green", value: "green" as const },
-  { name: "Tropical Sunrise", value: "tropical_sunrise" as const },
+  { name: "Orange", value: "orange" as const },
   { name: "Rose", value: "rose" as const },
 ]
 

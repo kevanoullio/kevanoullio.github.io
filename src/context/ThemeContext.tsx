@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 
 type Theme = "light" | "dark" | "system"
 type ResolvedTheme = "light" | "dark"
-type ColorTheme = "blue" | "purple" | "green" | "tropical_sunrise" | "rose"
+type ColorTheme = "blue" | "purple" | "green" | "orange" | "rose"
 
 interface ThemeContextType {
   theme: Theme
@@ -118,9 +118,9 @@ const applyColorTokens = (
 
 export const colorThemeConfig: Record<ColorTheme, ColorThemeDefinition> = {
   blue: createPalette({
-    primary: "0.549 0.194 262.5",
-    secondary: "0.63 0.14 262.5",
-    accent: "0.582 0.223 306.3",
+    primary: "0.5398 0.1685 257.94",
+    secondary: "0.5599 0.2051 2.44",
+    accent: "0.6766 0.1354 69.45",
   }),
   purple: createPalette({
     primary: "0.582 0.223 306.3",
@@ -134,7 +134,7 @@ export const colorThemeConfig: Record<ColorTheme, ColorThemeDefinition> = {
     secondary: "0.46 0.12 150",
     accent: "0.604 0.213 199.5",
   }),
-  tropical_sunrise: createPalette({
+  orange: createPalette({
     primary: "0.7828 0.168 66.2",
     secondary: "0.74 0.12 75",
     accent: "0.9351 0.0415 190.88",
@@ -165,12 +165,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [colorTheme, setColorTheme] = useState<ColorTheme>(() => {
     try {
       if (typeof window !== "undefined") {
-        return (localStorage.getItem("colorTheme") as ColorTheme) || "blue"
+        return (localStorage.getItem("colorTheme") as ColorTheme) || "orange"
       }
     } catch {
       // localStorage may be unavailable in private browsing mode
     }
-    return "blue" // blue is the default color
+    return "orange" // orange is the default color
   })
 
   useEffect(() => {
