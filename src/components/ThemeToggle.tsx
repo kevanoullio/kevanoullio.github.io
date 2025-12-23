@@ -8,8 +8,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useTheme } from "@/context/ThemeContext"
-import { colorThemeConfig } from "@/context/ThemeContext"
+import { useTheme } from "@/context/useTheme"
+import { colorThemeConfig } from "@/context/theme-config"
 
 const colorThemes = [
   { name: "Blue", value: "blue" as const },

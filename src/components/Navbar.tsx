@@ -16,7 +16,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/" className="flex items-center space-x-2">
           <span className="text-xl font-bold text-primary">Kevin Ulliac</span>
@@ -29,10 +29,10 @@ export function Navbar() {
               key={link.path}
               to={link.path}
               className={cn(
-                'text-sm font-medium transition-colors hover:text-primary',
+                "text-sm font-medium transition-colors hover:text-primary",
                 location.pathname === link.path
-                  ? 'text-primary'
-                  : 'text-muted-foreground'
+                  ? "text-primary"
+                  : "text-muted-foreground"
               )}
             >
               {link.name}
@@ -49,6 +49,7 @@ export function Navbar() {
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
+            className="border border-primary/20 dark:border-primary/30 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -64,10 +65,10 @@ export function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  'block py-2 text-sm font-medium transition-colors hover:text-primary',
+                  "block py-2 text-center text-sm font-medium transition-colors hover:text-primary",
                   location.pathname === link.path
-                    ? 'text-primary'
-                    : 'text-muted-foreground'
+                    ? "text-primary"
+                    : "text-muted-foreground"
                 )}
                 onClick={() => setMobileMenuOpen(false)}
               >

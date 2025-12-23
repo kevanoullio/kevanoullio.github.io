@@ -34,7 +34,12 @@ export function Home() {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link to="/contact">Get In Touch</Link>
+              <Link
+                to="/contact"
+                className="bg-background text-foreground border-border hover:border-primary/60 dark:border-input dark:hover:border-primary/60 hover:bg-muted hover:text-primary"
+              >
+                Get In Touch
+              </Link>
             </Button>
           </div>
         </section>
