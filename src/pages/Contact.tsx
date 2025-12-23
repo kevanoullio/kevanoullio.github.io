@@ -4,13 +4,6 @@ import { Button } from "@/components/ui/button"
 
 const contactMethods = [
   {
-    icon: Mail,
-    title: "Email",
-    description: "Feel free to reach out via email",
-    value: "kevanoullio@outlook.com",
-    href: "mailto:kevanoullio@outlook.com",
-  },
-  {
     icon: Github,
     title: "GitHub",
     description: "Check out my code and contributions",
@@ -24,6 +17,13 @@ const contactMethods = [
     value: "linkedin.com/in/kevanoullio",
     href: "https://www.linkedin.com/in/kevinulliac/",
   },
+  {
+    icon: Mail,
+    title: "Email",
+    description: "Feel free to reach out via email",
+    value: "kevanoullio@outlook.com",
+    href: "mailto:kevanoullio@outlook.com",
+  }
 ]
 
 export function Contact() {

@@ -9,24 +9,27 @@ const projects = [
     technologies: ["Python", "Word2vec", "Keras"],
     role: "Researcher and Developer (team of 3)",
     repoUrl: "https://github.com/kevanoullio/apples-to-apples-agent",
+    liveUrl: "none"
   },
   {
     title: "House of Tutor",
     description: "A tutoring mobile app for tutors and students, developed for Android.",
     image: "/.svg",
     categories: ["Education", "Mobile App", "Android Development"],
-    technologies: ["Kotlin", "Gradle", "SQLite/Room", "Firebase"],
+    technologies: ["Kotlin", "Gradle", "SQLite", "Firebase"],
     role: "Scrum Master and Software Architect (team of 5)",
     repoUrl: "https://github.com/kevanoullio/house-of-tutor-android-app",
+    liveUrl: "none"
   },
   {
     title: "Vintique Sound",
     description: "A responsive static website prototype for my music business.",
-    image: "/.svg",
+    image: "../public/project_cards/vintique_sound_website_prototype_preview.png",
     categories: ["Website", "Music", "Audio Engineering"],
     technologies: ["HTML", "JavaScript", "CSS"],
     role: "Sole Developer (all code)",
     repoUrl: "https://github.com/kevanoullio/vintique-sound-website-prototype",
+    liveUrl: "none"
   }
 ]
 

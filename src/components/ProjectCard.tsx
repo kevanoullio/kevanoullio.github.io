@@ -26,7 +26,7 @@ export function ProjectCard({ title, description, image, categories = [], techno
           />
         </div>
       )}
-      <CardHeader>
+      <CardHeader className="text-left">
         <CardTitle className="text-lg">{title}</CardTitle>
         <CardDescription className="line-clamp-2">{description}</CardDescription>
         {role && (

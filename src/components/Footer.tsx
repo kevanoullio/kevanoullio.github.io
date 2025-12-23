@@ -16,13 +16,6 @@ export function Footer() {
 
           <div className="flex items-center gap-4">
             <a
-              href="mailto:kevanoullio@outlook.com"
-              className="text-muted-foreground transition-colors hover:text-primary"
-              aria-label="Email"
-            >
-              <Mail className="h-5 w-5" />
-            </a>
-            <a
               href="https://github.com/kevanoullio"
               target="_blank"
               rel="noopener"
@@ -39,6 +32,13 @@ export function Footer() {
               aria-label="LinkedIn"
             >
               <Linkedin className="h-5 w-5" />
+            </a>
+            <a
+              href="mailto:kevanoullio@outlook.com"
+              className="text-muted-foreground transition-colors hover:text-primary"
+              aria-label="Email"
+            >
+              <Mail className="h-5 w-5" />
             </a>
           </div>
         </div>
