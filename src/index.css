@@ -18,7 +18,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    --radius: 0.625rem;
+    --radius: 0.5rem;
     --background: color-mix(in oklch, oklch(1 0 0) 92%, oklch(0.549 0.194 262.5) 8%);
     --foreground: color-mix(in oklch, oklch(0.21 0.007 258) 78%, oklch(0.549 0.194 262.5) 22%);
     --card: color-mix(in oklch, var(--background) 96%, var(--foreground) 4%);
