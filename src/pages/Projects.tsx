@@ -2,13 +2,13 @@ import { ProjectCard } from "@/components/ProjectCard"
 
 const projects = [
   {
-    title: "Apples to Apples",
-    description: "An AI Agent and fully functional Apples to Apples game.",
-    image: "/.svg",
-    categories: ["AI", "Machine Learning", "Game Development"],
-    technologies: ["Python", "Word2vec", "Keras"],
-    role: "Researcher and Developer (team of 3)",
-    repoUrl: "https://github.com/kevanoullio/apples-to-apples-agent",
+    title: "Vintique Sound",
+    description: "A responsive static website prototype for my music business.",
+    image: "../public/project_cards/vintique_sound_website_prototype-preview.png",
+    categories: ["Website", "Music", "Audio Engineering"],
+    technologies: ["HTML", "JavaScript", "CSS"],
+    role: "Sole Developer (all code)",
+    repoUrl: "https://github.com/kevanoullio/vintique-sound-website-prototype",
     liveUrl: "none"
   },
   {
@@ -22,13 +22,13 @@ const projects = [
     liveUrl: "none"
   },
   {
-    title: "Vintique Sound",
-    description: "A responsive static website prototype for my music business.",
-    image: "../public/project_cards/vintique_sound_website_prototype_preview.png",
-    categories: ["Website", "Music", "Audio Engineering"],
-    technologies: ["HTML", "JavaScript", "CSS"],
-    role: "Sole Developer (all code)",
-    repoUrl: "https://github.com/kevanoullio/vintique-sound-website-prototype",
+    title: "Apples to Apples",
+    description: "An AI Agent and fully functional Apples to Apples game.",
+    image: "../public/project_cards/apples_to_apples-preview.png",
+    categories: ["AI", "Machine Learning", "Game Development"],
+    technologies: ["Python", "Word2vec", "Keras"],
+    role: "Researcher and Developer (team of 3)",
+    repoUrl: "https://github.com/kevanoullio/apples-to-apples-agent",
     liveUrl: "none"
   }
 ]
