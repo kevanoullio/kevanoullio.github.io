@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 export function Home() {
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 text-center">
       {/* Hero Section */}
       <section className="my-16 min-h-[65vh]">
         <div className="flex justify-center pb-12">
@@ -52,9 +52,19 @@ export function Home() {
             <div className="mb-4 rounded-full bg-primary/10 p-4">
               <Laptop className="h-8 w-8 text-primary" />
             </div>
-            <h3 className="mb-2 text-xl font-semibold">Full Stack Apps</h3>
+            <h3 className="mb-2 text-xl font-semibold">Full Stack Applications</h3>
             <p className="text-muted-foreground">
               Developing complete web applications from frontend to backend with modern technologies.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center rounded-lg border border-border bg-card p-6 text-center transition-all hover:border-primary/50 hover:shadow-lg">
+            <div className="mb-4 rounded-full bg-primary/10 p-4">
+              <Code2 className="h-8 w-8 text-primary" />
+            </div>
+            <h3 className="mb-2 text-xl font-semibold">Android Development</h3>
+            <p className="text-muted-foreground">
+              Designing intuitive, high-performance mobile apps that deliver seamless user experiences on Android.
             </p>
           </div>
 
@@ -67,17 +77,6 @@ export function Home() {
               Building powerful CLI tools and terminal-based applications with clean, efficient code.
             </p>
           </div>
-
-          <div className="flex flex-col items-center rounded-lg border border-border bg-card p-6 text-center transition-all hover:border-primary/50 hover:shadow-lg">
-            <div className="mb-4 rounded-full bg-primary/10 p-4">
-              <Code2 className="h-8 w-8 text-primary" />
-            </div>
-            <h3 className="mb-2 text-xl font-semibold">Backend Development</h3>
-            <p className="text-muted-foreground">
-              Creating robust, scalable backend systems using various programming languages and frameworks.
-            </p>
-          </div>
-
         </div>
       </section>
 
@@ -133,7 +132,7 @@ export function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 my-16 border-t border-border bg-muted/50 text-center">
+      <section className="py-20 my-16 border-t border-border bg-muted/50">
         <h2 className="mb-4 text-3xl font-bold">Ready to see my work?</h2>
         <p className="mb-8 text-muted-foreground">
           Check out my projects to see what I've been building.
