@@ -2,14 +2,14 @@ import { ProjectCard } from "@/components/ProjectCard"
 
 const projects = [
   {
-    title: "Vintique Sound",
+    title: "Vintique Sound (prototype)",
     description: "A responsive static website prototype for my music business.",
     image: "./project_cards/vintique_sound_website_prototype-preview.png",
     categories: ["Website", "Music", "Audio Engineering"],
     technologies: ["HTML", "JavaScript", "CSS"],
     role: "Sole Developer (all code)",
     repoUrl: "https://github.com/kevanoullio/vintique-sound-website-prototype",
-    liveUrl: "none"
+    liveUrl: "https://kevanoullio.github.io/vintique-sound-website-prototype/"
   },
   {
     title: "House of Tutor",
@@ -19,7 +19,7 @@ const projects = [
     technologies: ["Kotlin", "Gradle", "SQLite", "Firebase"],
     role: "Scrum Master and Software Architect (team of 5)",
     repoUrl: "https://github.com/kevanoullio/house-of-tutor-android-app",
-    liveUrl: "none"
+    // liveUrl: "none"
   },
   {
     title: "Apples to Apples",
@@ -29,7 +29,7 @@ const projects = [
     technologies: ["Python", "Word2vec", "Keras"],
     role: "Researcher and Developer (team of 3)",
     repoUrl: "https://github.com/kevanoullio/apples-to-apples-agent",
-    liveUrl: "none"
+    // liveUrl: "none"
   }
 ]
 
