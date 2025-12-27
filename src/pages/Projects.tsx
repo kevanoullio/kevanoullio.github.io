@@ -4,7 +4,7 @@ const projects = [
   {
     title: "Vintique Sound",
     description: "A responsive static website prototype for my music business.",
-    image: "../public/project_cards/vintique_sound_website_prototype-preview.png",
+    image: "./project_cards/vintique_sound_website_prototype-preview.png",
     categories: ["Website", "Music", "Audio Engineering"],
     technologies: ["HTML", "JavaScript", "CSS"],
     role: "Sole Developer (all code)",
@@ -14,7 +14,7 @@ const projects = [
   {
     title: "House of Tutor",
     description: "A tutoring mobile app for tutors and students, developed for Android.",
-    image: "../public/project_cards/house_of_tutor-preview.png",
+    image: "./project_cards/house_of_tutor-preview.png",
     categories: ["Education", "Mobile App", "Android Development"],
     technologies: ["Kotlin", "Gradle", "SQLite", "Firebase"],
     role: "Scrum Master and Software Architect (team of 5)",
@@ -24,7 +24,7 @@ const projects = [
   {
     title: "Apples to Apples",
     description: "An AI Agent and fully functional Apples to Apples game.",
-    image: "../public/project_cards/apples_to_apples-preview.png",
+    image: "./project_cards/apples_to_apples-preview.png",
     categories: ["AI", "Machine Learning", "Game Development"],
     technologies: ["Python", "Word2vec", "Keras"],
     role: "Researcher and Developer (team of 3)",

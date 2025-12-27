@@ -9,7 +9,7 @@ export function Home() {
       <section className="my-16 min-h-[65vh]">
         <div className="flex justify-center pb-12">
           <img
-            src="../../public/kevano_phonebooth.jpg"
+            src="./kevano_phonebooth.jpg"
             alt="a picture of kevin in front of a phonebooth"
             width={320}
             height={640}
