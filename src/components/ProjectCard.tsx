@@ -142,7 +142,7 @@ export function ProjectCard({ title, description, image, tags = [], categories =
                   </div>
                 )}
 
-                <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                <div className="mt-6 gap-6 sm:grid-cols-2">
                   {categories.length > 0 && (
                     <div className="flex flex-col items-start">
                       <div className="mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Categories</div>
@@ -160,7 +160,7 @@ export function ProjectCard({ title, description, image, tags = [], categories =
                   )}
                 </div>
 
-                <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                <div className="mt-6 gap-6 sm:grid-cols-2">
                   {technologies.length > 0 && (
                     <div className="flex flex-col items-start">
                       <div className="mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wide">Technologies</div>
