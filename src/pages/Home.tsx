@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { ArrowRight, Code2, Terminal, Laptop } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { TechBadge } from "@/components/TechBadge"
 
 export function Home() {
   return (
@@ -84,55 +85,14 @@ export function Home() {
       <section className="pt-16 my-16 border-t border-border">
         <h2 className="mb-12 text-center text-3xl font-bold">Built With</h2>
         <div className="flex items-center justify-center gap-8">
-          <div className="group relative" tabIndex={0} aria-label="React">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-focus-visible:-translate-y-1 group-focus-visible:shadow-lg">
-              <img src="/react.svg" alt="React logo" className="h-8 w-8" />
-            </div>
-            <div className="pointer-events-none absolute -top-3 left-1/2 -translate-x-1/2 -translate-y-2 opacity-0 transition-all duration-300 group-hover:-translate-y-5 group-hover:opacity-100 group-focus-visible:-translate-y-5 group-focus-visible:opacity-100">
-              <div className="rounded-full bg-linear-to-r from-primary to-accent p-px">
-                <div className="whitespace-nowrap rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold backdrop-blur">
-                  <span className="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
-                    React
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group relative" tabIndex={0} aria-label="Vite">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-focus-visible:-translate-y-1 group-focus-visible:shadow-lg">
-              <img src="/vite.svg" alt="Vite logo" className="h-8 w-8" />
-            </div>
-            <div className="pointer-events-none absolute -top-3 left-1/2 -translate-x-1/2 -translate-y-2 opacity-0 transition-all duration-300 group-hover:-translate-y-5 group-hover:opacity-100 group-focus-visible:-translate-y-5 group-focus-visible:opacity-100">
-              <div className="rounded-full bg-linear-to-r from-primary to-accent p-px">
-                <div className="whitespace-nowrap rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold backdrop-blur">
-                  <span className="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Vite
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="group relative" tabIndex={0} aria-label="Tailwind CSS">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-focus-visible:-translate-y-1 group-focus-visible:shadow-lg">
-              <img src="/tailwindcss.svg" alt="Tailwind CSS logo" className="h-8 w-8" />
-            </div>
-            <div className="pointer-events-none absolute -top-3 left-1/2 -translate-x-1/2 -translate-y-2 opacity-0 transition-all duration-300 group-hover:-translate-y-5 group-hover:opacity-100 group-focus-visible:-translate-y-5 group-focus-visible:opacity-100">
-              <div className="rounded-full bg-linear-to-r from-primary to-accent p-px">
-                <div className="whitespace-nowrap rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold backdrop-blur">
-                  <span className="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Tailwind CSS
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <TechBadge label="React" src="/react.svg" alt="React logo" />
+          <TechBadge label="Vite" src="/vite.svg" alt="Vite logo" />
+          <TechBadge label="Tailwind CSS" src="/tailwindcss.svg" alt="Tailwind CSS logo" />
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 my-16 border-t border-border bg-muted/50">
+      <section className="px-4 py-20 my-16 border-t border-border bg-muted/50">
         <h2 className="mb-4 text-3xl font-bold">Ready to see my work?</h2>
         <p className="mb-8 text-muted-foreground">
           Check out my projects to see what I've been building.
