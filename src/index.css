@@ -9,24 +9,6 @@
   margin: 0 auto;
 }
 
-@media (min-width: 768px) {
-  #root {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  #root {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  #root {
-    max-width: 1280px;
-  }
-}
-
 /* Tailwind v4 variant helper */
 @custom-variant dark (&:is(.dark *));
 
