@@ -2,6 +2,15 @@ import { ProjectCard } from "@/components/ProjectCard"
 
 const projects = [
   {
+    title: "Vintique Sound (WIP)",
+    description: "A responsive mostly static website for my music business.",
+    image: "./project_cards/vintique_sound_website-preview.png",
+    tags: ["Website", "React", "Tailwind CSS", "Astro"],
+    categories: ["Website", "Music", "Audio Engineering"],
+    technologies: ["React", "Tailwind CSS", "Astro"],
+    role: "Sole Developer (all code)",
+  },
+  {
     title: "Vintique Sound (prototype)",
     description: "A responsive static website prototype for my music business.",
     image: "./project_cards/vintique_sound_website_prototype-preview.png",
