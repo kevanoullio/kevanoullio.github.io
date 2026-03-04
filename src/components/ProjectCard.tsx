@@ -84,7 +84,7 @@ export function ProjectCard({ title, description, image, tags = [], categories =
               <Button
                 variant="outline"
                 size="sm"
-                className="bg-background text-foreground border-border hover:border-primary/60 dark:border-input dark:hover:border-primary/60 hover:bg-muted hover:text-primary"
+                className="bg-background text-foreground border-border hover:border-primary/60 hover:bg-muted hover:text-primary dark:bg-primary/8 dark:border-primary/28 dark:hover:bg-primary/12 dark:hover:border-primary/45"
                 asChild
               >
                 <a href={repoUrl} target="_blank" rel="noopener noreferrer">
@@ -186,7 +186,7 @@ export function ProjectCard({ title, description, image, tags = [], categories =
                       <Button
                         variant="outline"
                         size="sm"
-                        className="bg-background text-foreground border-border hover:border-primary/60 dark:border-input dark:hover:border-primary/60 hover:bg-muted hover:text-primary"
+                        className="bg-background text-foreground border-border hover:border-primary/60 hover:bg-muted hover:text-primary dark:bg-primary/8 dark:border-primary/28 dark:hover:bg-primary/12 dark:hover:border-primary/45"
                         asChild
                       >
                         <a href={repoUrl} target="_blank" rel="noopener noreferrer">

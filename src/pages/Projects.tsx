@@ -9,6 +9,7 @@ const projects = [
     categories: ["Website", "Music", "Audio Engineering"],
     technologies: ["React", "Tailwind CSS", "Astro"],
     role: "Sole Developer (all code)",
+    liveUrl: "https://vintiquesound.netlify.app/"
   },
   {
     title: "Vintique Sound (prototype)",
