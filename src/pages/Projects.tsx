@@ -2,8 +2,10 @@ import { ProjectCard } from "@/components/ProjectCard"
 
 const projects = [
   {
-    title: "Vintique Sound (WIP)",
+    title: "Vintique Sound",
+    subtitle: "Business Website",
     description: "A responsive mostly static website for my music business.",
+    longDescription: "I designed and developed a modern, responsive website for my music business, Vintique Sound. The site showcases my audio engineering services, integrates a contact form, and features a clean, professional design. Built with Astro, React, and Tailwind CSS, it demonstrates my ability to deliver production-ready web solutions and manage all aspects of the development lifecycle.",
     image: "./project_cards/vintique_sound_website-preview.png",
     tags: ["Website", "React", "Tailwind CSS", "Astro"],
     categories: ["Website", "Music", "Audio Engineering"],
@@ -12,8 +14,10 @@ const projects = [
     liveUrl: "https://vintiquesound.netlify.app/"
   },
   {
-    title: "Vintique Sound (prototype)",
+    title: "Vintique Sound",
+    subtitle: "Website Prototype",
     description: "A responsive static website prototype for my music business.",
+    longDescription: "This prototype was my first iteration of the Vintique Sound website, built solely with HTML, CSS, and JavaScript. It allowed me to experiment with layout, branding, and user experience of a simple tech stack before moving to a more modern and complex one. The project highlights my ability to quickly prototype ideas and iterate based on feedback.",
     image: "./project_cards/vintique_sound_website_prototype-preview.png",
     tags: ["Website", "HTML", "CSS", "JavaScript"],
     categories: ["Website", "Music", "Audio Engineering"],
@@ -24,7 +28,9 @@ const projects = [
   },
   {
     title: "House of Tutor",
+    subtitle: "Android Mobile App",
     description: "A tutoring mobile app for tutors and students, developed for Android.",
+    longDescription: "Led a team of four other students as Scrum Master and Software Architect to develop House of Tutor, an Android app connecting tutors and students. Managed project planning, architecture, and implementation using Kotlin, SQLite, and Firebase. The app features scheduling, messaging, and user management. This project demonstrates my leadership and technical skills in mobile development.",
     image: "./project_cards/house_of_tutor-preview.png",
     tags: ["Android Development", "Mobile App", "Kotlin"],
     categories: ["Education", "Mobile App", "Android Development"],
@@ -35,7 +41,9 @@ const projects = [
   },
   {
     title: "Apples to Apples",
+    subtitle: "Card Game with AI Agent",
     description: "An AI Agent and fully functional Apples to Apples game.",
+    longDescription: "Developed an AI agent and a digital version of the Apples to Apples game as part of a three-person team. Utilized Python, Word2vec, and Keras to create intelligent gameplay and natural language processing features. This project showcases my experience in AI/ML, game development, and collaborative research.",
     image: "./project_cards/apples_to_apples-preview.png",
     tags: ["AI/ML", "Game Development", "Python"],
     categories: ["AI/ML", "Artificial Intelligence", "Machine Learning", "Game Development"],
