@@ -44,8 +44,13 @@ export function Footer() {
         </div>
 
         <div className="mt-6 border-t border-border pt-6 text-center">
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} Kevin Ulliac. All rights reserved.
+          <p className="text-sm text-muted-foreground tracking-wider">
+            <span className="text-primary">{'>'}</span>
+            {' '}
+            <span className="uppercase">{'© '}{currentYear} kevanoullio // all_rights_reserved</span>
+          </p>
+          <p className="mt-2 text-xs text-muted-foreground/60 tracking-widest uppercase">
+            built with react + vite + tailwind
           </p>
         </div>
       </div>

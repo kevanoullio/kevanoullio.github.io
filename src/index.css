@@ -1,6 +1,38 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* === GLOBAL SCROLL & TYPOGRAPHY === */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px; /* Account for sticky navbar */
+}
+
+body {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Selection color */
+::selection {
+  background-color: oklch(var(--primary) / 0.3);
+  color: oklch(var(--foreground));
+}
+
+/* Scrollbar styling for terminal feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--background));
+  border-left: 1px solid oklch(var(--border));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--muted));
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--primary) / 0.5);
+}
+
 /* App layout */
 
 #root {
@@ -145,5 +177,138 @@
   h1 {
     font-size: 3.2em;
     line-height: 1.1;
+  }
+}
+
+/* ============================================
+   CRT / TERMINAL EFFECTS
+   ============================================ */
+
+/* CRT flicker animation */
+@keyframes crt-flicker {
+  0% {
+    opacity: 0.97;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.98;
+  }
+}
+
+/* Cursor blink animation for terminal feel */
+@keyframes cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Subtle glow pulse for accents */
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 4px oklch(var(--primary) / 0.15);
+  }
+  50% {
+    text-shadow: 0 0 12px oklch(var(--primary) / 0.35);
+  }
+}
+
+/* Fade-in for sections on scroll */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Blinking cursor */
+.cursor-blink::after {
+  content: '█';
+  animation: cursor-blink 1s step-end infinite;
+  color: oklch(var(--primary));
+  margin-left: 2px;
+}
+
+/* Glow pulse for primary text */
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ============================================
+   TERMINAL-SPECIFIC UTILITY CLASSES
+   ============================================ */
+
+/* ASCII-style box border */
+.terminal-box {
+  border: 1px solid oklch(var(--border));
+  position: relative;
+}
+
+.terminal-box::before {
+  content: '+';
+  position: absolute;
+  top: -0.5rem;
+  left: -0.5rem;
+  color: oklch(var(--primary));
+  font-size: 0.75rem;
+}
+
+.terminal-box::after {
+  content: '+';
+  position: absolute;
+  bottom: -0.5rem;
+  right: -0.5rem;
+  color: oklch(var(--primary));
+  font-size: 0.75rem;
+}
+
+/* Monospace block */
+.terminal-block {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: oklch(var(--muted) / 0.15);
+  border: 1px solid oklch(var(--border));
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Section fade-in on scroll */
+.fade-in-section {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+/* Hover line that expands from left */
+.hover-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: oklch(var(--primary));
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.hover-line:hover::before {
+  transform: scaleY(1);
+}
+
+/* ============================================
+   PRINT STYLES — strip CRT effects for printing
+   ============================================ */
+@media print {
+  .crt-overlay,
+  [data-crt-overlay] {
+    display: none !important;
   }
 }

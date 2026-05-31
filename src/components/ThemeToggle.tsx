@@ -10,13 +10,15 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useTheme } from "@/context/useTheme"
 import { colorThemeConfig } from "@/context/theme-config"
+import type { ColorTheme } from "@/context/theme-config"
 
-const colorThemes = [
-  { name: "Blue", value: "blue" as const },
-  { name: "Purple", value: "purple" as const },
-  { name: "Green", value: "green" as const },
-  { name: "Orange", value: "orange" as const },
-  { name: "Rose", value: "rose" as const },
+const colorThemes: { name: string; value: ColorTheme }[] = [
+  { name: "Amber", value: "amber" },
+  { name: "Green", value: "green" },
+  { name: "Blue", value: "blue" },
+  { name: "White", value: "white" },
+  { name: "Cyan", value: "cyan" },
+  { name: "Rose", value: "rose" },
 ]
 
 export function ThemeToggle() {

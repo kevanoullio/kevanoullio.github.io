@@ -1,5 +1,11 @@
 type ResolvedTheme = "light" | "dark"
-export type ColorTheme = "blue" | "purple" | "green" | "orange" | "rose"
+export type ColorTheme = 
+  | "amber"       // Classic amber terminal (IBM 8514 / VT100)
+  | "green"       // Phosphor green terminal (Retro CRT)
+  | "blue"        // Retro IBM blue (Color PC)
+  | "white"       // White-on-black terminal (High contrast)
+  | "cyan"        // Teal/cyan phosphor (DEC VT52)
+  | "rose"        // Warm rose (Vintage Mac terminal)
 
 type ColorThemeDefinition = {
   primary: string
@@ -7,69 +13,103 @@ type ColorThemeDefinition = {
   accent: string
   background: string
   text: string
-}
-
-const BASE_LIGHT = "oklch(1 0 0)"
-const BASE_DARK = "oklch(0.21 0.007 258)"
-
-const mixWithPrimary = (primary: string, base: string, primaryPercentage: number) => {
-  const basePercentage = 100 - primaryPercentage
-  return `color-mix(in oklch, ${base} ${basePercentage}%, oklch(${primary}) ${primaryPercentage}%)`
+  surface: string
+  highlight: string
 }
 
 const createPalette = ({
   primary,
   secondary,
   accent,
-  lightTint = 8,
-  darkTint = 22,
-}: {
-  primary: string
-  secondary: string
-  accent: string
-  lightTint?: number
-  darkTint?: number
-}): ColorThemeDefinition => ({
+  background,
+  text,
+  surface,
+  highlight,
+}: ColorThemeDefinition): ColorThemeDefinition => ({
   primary,
   secondary,
   accent,
-  background: mixWithPrimary(primary, BASE_LIGHT, lightTint),
-  text: mixWithPrimary(primary, BASE_DARK, darkTint),
+  background,
+  text,
+  surface,
+  highlight,
 })
 
+// ============================================
+// COLOR PALETTES — VINTAGE TERMINAL EDITION
+// ============================================
+
 export const colorThemeConfig: Record<ColorTheme, ColorThemeDefinition> = {
-  blue: createPalette({
-    primary: "0.5398 0.1685 257.94",
-    secondary: "0.5599 0.2051 2.44",
-    accent: "0.6988 0.1389 69.45",
+  // --- AMBER: Classic amber phosphor terminal ---
+  amber: createPalette({
+    primary: "0.75 0.165 85",        // Warm amber glow
+    secondary: "0.60 0.12 80",       // Muted amber
+    accent: "0.90 0.10 90",          // Bright amber highlight
+    background: "0.18 0.015 85",     // Very dark warm background
+    text: "0.85 0.08 85",            // Amber text
+    surface: "0.22 0.02 85",         // Slightly lighter surface
+    highlight: "0.95 0.12 88",       // Glowing highlight
   }),
-  purple: createPalette({
-    primary: "0.582 0.223 306.3",
-    secondary: "0.54 0.16 301.2",
-    accent: "0.583 0.214 350.92",
-    lightTint: 10,
-    darkTint: 24,
-  }),
+
+  // --- GREEN: Phosphor green CRT ---
   green: createPalette({
-    primary: "0.6454 0.1905 141.54",
-    secondary: "0.46 0.12 150",
-    accent: "0.5564 0.095 225.93",
+    primary: "0.70 0.185 145",      // Classic phosphor green
+    secondary: "0.50 0.14 140",     // Muted green
+    accent: "0.85 0.10 150",        // Bright green highlight
+    background: "0.10 0.005 145",   // Near-black green-tinted
+    text: "0.75 0.12 145",          // Green text
+    surface: "0.14 0.008 145",      // Slightly lighter surface
+    highlight: "0.90 0.08 148",     // Glowing green
   }),
-  orange: createPalette({
-    primary: "0.7828 0.168 66.2",
-    secondary: "0.74 0.12 75",
-    accent: "0.7552 0.1114 190.88",
-    lightTint: 6,
-    darkTint: 20,
+
+  // --- BLUE: Retro IBM color PC ---
+  blue: createPalette({
+    primary: "0.65 0.16 250",       // Retro blue
+    secondary: "0.45 0.12 245",     // Muted blue
+    accent: "0.80 0.10 248",        // Bright blue highlight
+    background: "0.10 0.008 250",   // Dark blue-black
+    text: "0.70 0.10 250",          // Blue text
+    surface: "0.14 0.01 250",       // Slightly lighter surface
+    highlight: "0.85 0.08 252",     // Glowing blue
   }),
+
+  // --- WHITE: High contrast white-on-black ---
+  white: createPalette({
+    primary: "0.95 0.005 270",      // Slightly cool white
+    secondary: "0.70 0.01 260",     // Muted gray-white
+    accent: "1.00 0.002 270",        // Pure white highlight
+    background: "0.08 0.003 270",   // Near-black
+    text: "0.92 0.005 270",         // White text
+    surface: "0.12 0.004 265",      // Slightly lighter surface
+    highlight: "1.00 0.001 270",    // Pure white glow
+  }),
+
+  // --- CYAN: DEC VT52 teal phosphor ---
+  cyan: createPalette({
+    primary: "0.72 0.14 195",       // Teal/cyan
+    secondary: "0.50 0.10 190",     // Muted teal
+    accent: "0.88 0.08 200",        // Bright cyan highlight
+    background: "0.10 0.006 195",   // Dark teal-black
+    text: "0.75 0.10 195",          // Cyan text
+    surface: "0.14 0.008 195",      // Slightly lighter surface
+    highlight: "0.92 0.06 198",     // Glowing cyan
+  }),
+
+  // --- ROSE: Vintage Mac terminal ---
   rose: createPalette({
-    primary: "0.566 0.213 10.2",
-    secondary: "0.52 0.16 20",
-    accent: "0.64 0.2421 304.95",
-    lightTint: 9,
-    darkTint: 24,
+    primary: "0.65 0.18 15",        // Warm rose
+    secondary: "0.48 0.12 10",      // Muted rose
+    accent: "0.82 0.12 18",         // Bright rose highlight
+    background: "0.12 0.01 15",     // Dark rose-black
+    text: "0.80 0.08 15",           // Rose text
+    surface: "0.16 0.012 15",       // Slightly lighter surface
+    highlight: "0.90 0.10 17",      // Glowing rose
   }),
 }
+
+// ============================================
+// SURFACE TOKENS — Enhanced depth layers
+// ============================================
 
 export const applySurfaceTokens = (
   root: HTMLElement,
@@ -81,18 +121,19 @@ export const applySurfaceTokens = (
   const background = resolvedTheme === "light" ? lightSurface : darkSurface
   const foreground = resolvedTheme === "light" ? darkSurface : lightSurface
 
+  // Card/surface with deeper contrast for terminal feel
   const card =
     resolvedTheme === "light"
-      ? `color-mix(in oklch, ${background} 96%, ${foreground} 4%)`
-      : `color-mix(in oklch, ${background} 90%, ${foreground} 10%)`
+      ? `color-mix(in oklch, ${background} 94%, ${foreground} 6%)`
+      : `color-mix(in oklch, ${background} 88%, ${foreground} 12%)`
   const popover =
     resolvedTheme === "light"
-      ? `color-mix(in oklch, ${background} 98%, ${foreground} 2%)`
-      : `color-mix(in oklch, ${background} 88%, ${foreground} 12%)`
+      ? `color-mix(in oklch, ${background} 97%, ${foreground} 3%)`
+      : `color-mix(in oklch, ${background} 85%, ${foreground} 15%)`
   const sidebar =
     resolvedTheme === "light"
-      ? `color-mix(in oklch, ${background} 93%, ${foreground} 7%)`
-      : `color-mix(in oklch, ${background} 87%, ${foreground} 13%)`
+      ? `color-mix(in oklch, ${background} 92%, ${foreground} 8%)`
+      : `color-mix(in oklch, ${background} 84%, ${foreground} 16%)`
 
   root.style.setProperty("--background", background)
   root.style.setProperty("--foreground", foreground)
@@ -103,13 +144,19 @@ export const applySurfaceTokens = (
   root.style.setProperty("--sidebar", sidebar)
   root.style.setProperty("--sidebar-foreground", foreground)
 
-  const border = `color-mix(in oklch, ${foreground} 12%, ${background})`
+  // Sharper borders for terminal aesthetic
+  const border = `color-mix(in oklch, ${foreground} 20%, ${background})`
   root.style.setProperty("--border", border)
   root.style.setProperty("--input", border)
   root.style.setProperty("--sidebar-border", border)
-  const sidebarRing = `color-mix(in oklch, ${foreground} 30%, ${background})`
+  
+  const sidebarRing = `color-mix(in oklch, ${foreground} 35%, ${background})`
   root.style.setProperty("--sidebar-ring", sidebarRing)
 }
+
+// ============================================
+// COLOR TOKENS — Enhanced terminal feel
+// ============================================
 
 export const applyColorTokens = (
   root: HTMLElement,
@@ -126,8 +173,9 @@ export const applyColorTokens = (
   root.style.setProperty("--sidebar-primary", config.primary)
   root.style.setProperty("--sidebar-accent", config.accent)
 
-  const muted = `color-mix(in oklch, ${background} 85%, oklch(${config.primary}) 15%)`
-  const mutedForeground = `color-mix(in oklch, ${foreground} 75%, oklch(${config.primary}) 25%)`
+  // Muted tones with stronger primary influence for terminal feel
+  const muted = `color-mix(in oklch, ${background} 75%, oklch(${config.primary}) 25%)`
+  const mutedForeground = `color-mix(in oklch, ${foreground} 60%, oklch(${config.primary}) 40%)`
   root.style.setProperty("--muted", muted)
   root.style.setProperty("--muted-foreground", mutedForeground)
 

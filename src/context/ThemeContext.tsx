@@ -27,12 +27,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [colorTheme, setColorTheme] = useState<ColorTheme>(() => {
     try {
       if (typeof window !== "undefined") {
-        return (localStorage.getItem("colorTheme") as ColorTheme) || "orange"
+        const stored = localStorage.getItem("colorTheme") as ColorTheme | null
+        if (stored && stored in colorThemeConfig) {
+          return stored
+        }
       }
     } catch {
       // localStorage may be unavailable in private browsing mode
     }
-    return "orange" // orange is the default color
+    return "amber" // amber is the default color
   })
 
   useEffect(() => {
@@ -40,7 +43,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       return
     }
     const root = document.documentElement
-    const config = colorThemeConfig[colorTheme]
+    const config = colorThemeConfig[colorTheme] || colorThemeConfig["amber"]
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
     const resolvedTheme: ResolvedTheme = theme === "system" ? (prefersDark ? "dark" : "light") : theme
 
@@ -76,7 +79,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       if (theme === "system") {
         const resolvedTheme: ResolvedTheme = mediaQuery.matches ? "dark" : "light"
         const root = document.documentElement
-        const config = colorThemeConfig[colorTheme]
+        const config = colorThemeConfig[colorTheme] || colorThemeConfig["amber"]
         root.classList.remove("light", "dark")
         root.classList.add(resolvedTheme)
         root.style.setProperty("color-scheme", resolvedTheme)

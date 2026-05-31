@@ -1,42 +1,74 @@
-import { Link, useLocation } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "./ui/button"
 import { ThemeToggle } from "./ThemeToggle"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
-  { name: "Home", path: '/' },
-  { name: "Projects", path: "/projects" },
-  { name: "Contact", path: "/contact" },
+  { name: "HOME", path: "#home" },
+  { name: "SKILLS", path: "#skills" },
+  { name: "PROJECTS", path: "#projects" },
+  { name: "CONTACT", path: "#contact" },
 ]
 
 export function Navbar() {
-  const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("#home")
+  const observerRef = useRef<IntersectionObserver | null>(null)
+
+  // IntersectionObserver to track which section is in view
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]")
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`)
+          }
+        })
+      },
+      { rootMargin: "-40% 0px -50% 0px" }
+    )
+    sections.forEach((section) => observerRef.current?.observe(section))
+    return () => observerRef.current?.disconnect()
+  }, [])
+
+  const handleNavClick = (path: string) => {
+    setMobileMenuOpen(false)
+    const target = document.querySelector(path)
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="text-xl font-bold text-primary">Kevin Ulliac</span>
-        </Link>
+        {/* Brand */}
+        <a
+          href="#home"
+          onClick={(e) => { e.preventDefault(); handleNavClick("#home"); }}
+          className="flex items-center space-x-2 text-primary"
+        >
+          <span className="text-lg font-bold tracking-wider">[KEVANO]</span>
+        </a>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:gap-6">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.path}
-              to={link.path}
+              href={link.path}
+              onClick={(e) => { e.preventDefault(); handleNavClick(link.path); }}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                location.pathname === link.path
-                  ? "text-primary"
-                  : "text-muted-foreground"
+                "text-sm font-medium tracking-wider transition-colors",
+                activeSection === link.path
+                  ? "text-primary underline decoration-primary decoration-2 underline-offset-4"
+                  : "text-muted-foreground hover:text-primary"
               )}
             >
               {link.name}
-            </Link>
+            </a>
           ))}
           <ThemeToggle />
         </div>
@@ -61,19 +93,19 @@ export function Navbar() {
         <div className="border-t border-border md:hidden">
           <div className="container mx-auto px-4 py-4">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.path}
-                to={link.path}
+                href={link.path}
+                onClick={(e) => { e.preventDefault(); handleNavClick(link.path); }}
                 className={cn(
-                  "block py-2 text-center text-sm font-medium transition-colors hover:text-primary",
-                  location.pathname === link.path
-                    ? "text-primary"
-                    : "text-muted-foreground"
+                  "block py-2 text-center text-sm font-medium tracking-wider transition-colors",
+                  activeSection === link.path
+                    ? "text-primary underline decoration-primary decoration-2 underline-offset-4"
+                    : "text-muted-foreground hover:text-primary"
                 )}
-                onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
           </div>
         </div>

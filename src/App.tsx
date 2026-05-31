@@ -1,27 +1,35 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ThemeProvider } from "./context/ThemeContext"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
 import { Home } from "@/pages/Home"
 import { Projects } from "@/pages/Projects"
 import { Contact } from "@/pages/Contact"
+import { CrtOverlay } from "@/components/CrtOverlay"
 
 function App() {
   return (
     <ThemeProvider>
-      <Router>
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
+      <div className="flex flex-col min-h-screen bg-background text-foreground font-mono">
+        {/* CRT Overlay — renders scanlines + vignette on top of everything */}
+        <CrtOverlay />
+        
+        <Navbar />
+        <main className="flex-1 relative z-10">
+          <section id="home">
+            <Home />
+          </section>
+          <section id="skills">
+            {/* Skills section will be added here in Phase 3 */}
+          </section>
+          <section id="projects">
+            <Projects />
+          </section>
+          <section id="contact">
+            <Contact />
+          </section>
+        </main>
+        <Footer />
+      </div>
     </ThemeProvider>
   )
 }
