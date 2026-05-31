@@ -1,5 +1,6 @@
 import { Send, Mail, MapPin, Github, Linkedin } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Section } from "@/components/Section"
 
 const contactLinks = [
   { label: "EMAIL", icon: Mail, value: "kevanoullio@example.com", href: "mailto:kevanoullio@example.com" },
@@ -10,7 +11,7 @@ const contactLinks = [
 
 export function Contact() {
   return (
-    <div className="px-12">
+    <Section id="contact">
       <section className="my-16 text-center">
         <div className="mb-4 text-muted-foreground text-sm tracking-widest uppercase">
           {'// CONNECTION_REQUEST: INITIATED'}
@@ -112,6 +113,6 @@ export function Contact() {
           </div>
         </div>
       </section>
-    </div>
+    </Section>
   )
 }

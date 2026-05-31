@@ -1,3 +1,4 @@
+import { Section } from "@/components/Section"
 import { Github, ExternalLink, Folder } from "lucide-react"
 
 const projects = [
@@ -46,7 +47,7 @@ const projects = [
 
 export function Projects() {
   return (
-    <div className="px-12">
+    <Section id="projects">
       <section className="my-16 text-center">
         <div className="mb-4 text-muted-foreground text-sm tracking-widest uppercase">
           {'// LOG_ARCHIVE: PROJECT_ENTRIES'}
@@ -127,7 +128,7 @@ export function Projects() {
 
                 {/* Preview image — shown on hover or always on the right */}
                 {project.image && (
-                  <div className="hidden lg:block w-48 flex-shrink-0">
+                  <div className="hidden lg:block w-48 shrink-0">
                     <div className="border border-border p-1">
                       <img
                         src={project.image}
@@ -142,6 +143,6 @@ export function Projects() {
           ))}
         </div>
       </section>
-    </div>
+    </Section>
   )
 }
