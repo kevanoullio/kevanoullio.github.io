@@ -1,11 +1,10 @@
 type ResolvedTheme = "light" | "dark"
-export type ColorTheme = 
-  | "amber"       // Classic amber terminal (IBM 8514 / VT100)
-  | "green"       // Phosphor green terminal (Retro CRT)
-  | "blue"        // Retro IBM blue (Color PC)
-  | "white"       // White-on-black terminal (High contrast)
-  | "cyan"        // Teal/cyan phosphor (DEC VT52)
+export type ColorTheme =
   | "rose"        // Warm rose (Vintage Mac terminal)
+  | "amber"       // Warm pastel amber
+  | "cyan"        // Teal/cyan phosphor
+  | "sage"        // Soft sage green pastel
+  | "lavender"    // Soft lavender pastel
 
 type ColorThemeDefinition = {
   primary: string
@@ -36,54 +35,10 @@ const createPalette = ({
 })
 
 // ============================================
-// COLOR PALETTES — VINTAGE TERMINAL EDITION
+// COLOR PALETTES — FIVE PASTEL VINTAGE
 // ============================================
 
 export const colorThemeConfig: Record<ColorTheme, ColorThemeDefinition> = {
-  // --- AMBER: Classic amber phosphor terminal ---
-  amber: createPalette({
-    primary: "0.75 0.165 85",        // Warm amber glow
-    secondary: "0.60 0.12 80",       // Muted amber
-    accent: "0.90 0.10 90",          // Bright amber highlight
-    background: "0.18 0.015 85",     // Very dark warm background
-    text: "0.85 0.08 85",            // Amber text
-    surface: "0.22 0.02 85",         // Slightly lighter surface
-    highlight: "0.95 0.12 88",       // Glowing highlight
-  }),
-
-  // --- GREEN: Phosphor green CRT ---
-  green: createPalette({
-    primary: "0.70 0.185 145",      // Classic phosphor green
-    secondary: "0.50 0.14 140",     // Muted green
-    accent: "0.85 0.10 150",        // Bright green highlight
-    background: "0.10 0.005 145",   // Near-black green-tinted
-    text: "0.75 0.12 145",          // Green text
-    surface: "0.14 0.008 145",      // Slightly lighter surface
-    highlight: "0.90 0.08 148",     // Glowing green
-  }),
-
-  // --- BLUE: Retro IBM color PC ---
-  blue: createPalette({
-    primary: "0.65 0.16 250",       // Retro blue
-    secondary: "0.45 0.12 245",     // Muted blue
-    accent: "0.80 0.10 248",        // Bright blue highlight
-    background: "0.10 0.008 250",   // Dark blue-black
-    text: "0.70 0.10 250",          // Blue text
-    surface: "0.14 0.01 250",       // Slightly lighter surface
-    highlight: "0.85 0.08 252",     // Glowing blue
-  }),
-
-  // --- WHITE: High contrast white-on-black ---
-  white: createPalette({
-    primary: "0.95 0.005 270",      // Slightly cool white
-    secondary: "0.70 0.01 260",     // Muted gray-white
-    accent: "1.00 0.002 270",        // Pure white highlight
-    background: "0.08 0.003 270",   // Near-black
-    text: "0.92 0.005 270",         // White text
-    surface: "0.12 0.004 265",      // Slightly lighter surface
-    highlight: "1.00 0.001 270",    // Pure white glow
-  }),
-
   // --- CYAN: DEC VT52 teal phosphor ---
   cyan: createPalette({
     primary: "0.72 0.14 195",       // Teal/cyan
@@ -104,6 +59,39 @@ export const colorThemeConfig: Record<ColorTheme, ColorThemeDefinition> = {
     text: "0.80 0.08 15",           // Rose text
     surface: "0.16 0.012 15",       // Slightly lighter surface
     highlight: "0.90 0.10 17",      // Glowing rose
+  }),
+
+  // --- SAGE: Soft sage green pastel ---
+  sage: createPalette({
+    primary: "0.68 0.12 145",      // Soft sage green
+    secondary: "0.50 0.08 140",    // Muted sage
+    accent: "0.80 0.08 148",       // Bright sage highlight
+    background: "0.10 0.005 145",  // Dark sage-black
+    text: "0.70 0.09 145",         // Sage text
+    surface: "0.14 0.006 145",     // Slightly lighter surface
+    highlight: "0.85 0.06 148",    // Glowing sage
+  }),
+
+  // --- LAVENDER: Soft lavender pastel ---
+  lavender: createPalette({
+    primary: "0.70 0.12 305",      // Soft lavender
+    secondary: "0.48 0.08 300",    // Muted lavender
+    accent: "0.82 0.08 308",       // Bright lavender highlight
+    background: "0.10 0.006 305",  // Dark lavender-black
+    text: "0.72 0.09 305",         // Lavender text
+    surface: "0.14 0.007 305",     // Slightly lighter surface
+    highlight: "0.88 0.06 308",    // Glowing lavender
+  }),
+
+  // --- AMBER: Warm pastel amber/peach ---
+  amber: createPalette({
+    primary: "0.72 0.12 75",       // Warm pastel amber
+    secondary: "0.55 0.09 70",     // Muted amber
+    accent: "0.85 0.08 78",        // Bright amber highlight
+    background: "0.10 0.006 75",   // Dark amber-black
+    text: "0.74 0.09 75",          // Amber text
+    surface: "0.14 0.007 75",      // Slightly lighter surface
+    highlight: "0.90 0.06 78",     // Glowing amber
   }),
 }
 
@@ -149,13 +137,13 @@ export const applySurfaceTokens = (
   root.style.setProperty("--border", border)
   root.style.setProperty("--input", border)
   root.style.setProperty("--sidebar-border", border)
-  
+
   const sidebarRing = `color-mix(in oklch, ${foreground} 35%, ${background})`
   root.style.setProperty("--sidebar-ring", sidebarRing)
 }
 
 // ============================================
-// COLOR TOKENS — Enhanced terminal feel
+// COLOR TOKENS — Pastel terminal feel
 // ============================================
 
 export const applyColorTokens = (
@@ -163,9 +151,6 @@ export const applyColorTokens = (
   config: ColorThemeDefinition,
   resolvedTheme: ResolvedTheme
 ) => {
-  const background = resolvedTheme === "light" ? config.background : config.text
-  const foreground = resolvedTheme === "light" ? config.text : config.background
-
   root.style.setProperty("--primary", config.primary)
   root.style.setProperty("--secondary", config.secondary)
   root.style.setProperty("--accent", config.accent)
@@ -173,9 +158,10 @@ export const applyColorTokens = (
   root.style.setProperty("--sidebar-primary", config.primary)
   root.style.setProperty("--sidebar-accent", config.accent)
 
-  // Muted tones with stronger primary influence for terminal feel
-  const muted = `color-mix(in oklch, ${background} 75%, oklch(${config.primary}) 25%)`
-  const mutedForeground = `color-mix(in oklch, ${foreground} 60%, oklch(${config.primary}) 40%)`
+  // Muted: closer to background, subtle primary tint
+  const muted = `color-mix(in oklch, var(--background) 85%, oklch(${config.primary}) 15%)`
+  // Muted foreground: legible on muted, mix toward foreground
+  const mutedForeground = `color-mix(in oklch, var(--foreground) 50%, oklch(${config.primary}) 25%, var(--background) 25%)`
   root.style.setProperty("--muted", muted)
   root.style.setProperty("--muted-foreground", mutedForeground)
 

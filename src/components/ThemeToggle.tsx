@@ -13,12 +13,11 @@ import { colorThemeConfig } from "@/context/theme-config"
 import type { ColorTheme } from "@/context/theme-config"
 
 const colorThemes: { name: string; value: ColorTheme }[] = [
-  { name: "Amber", value: "amber" },
-  { name: "Green", value: "green" },
-  { name: "Blue", value: "blue" },
-  { name: "White", value: "white" },
   { name: "Cyan", value: "cyan" },
   { name: "Rose", value: "rose" },
+  { name: "Sage", value: "sage" },
+  { name: "Lavender", value: "lavender" },
+  { name: "Amber", value: "amber" },
 ]
 
 export function ThemeToggle() {

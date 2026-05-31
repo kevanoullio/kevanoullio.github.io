@@ -4,7 +4,7 @@
 /* === GLOBAL SCROLL & TYPOGRAPHY === */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 64px; /* Account for sticky navbar */
+  scroll-padding-top: 64px;
 }
 
 body {
@@ -17,13 +17,12 @@ body {
   color: oklch(var(--foreground));
 }
 
-/* Scrollbar styling for terminal feel */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: oklch(var(--background));
-  border-left: 1px solid oklch(var(--border));
 }
 ::-webkit-scrollbar-thumb {
   background: oklch(var(--muted));
@@ -33,18 +32,10 @@ body {
   background: oklch(var(--primary) / 0.5);
 }
 
-/* App layout */
-
-#root {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
 /* Tailwind v4 variant helper */
 @custom-variant dark (&:is(.dark *));
 
-/* Theme tokens (variables wrapped with "oklch()" become actual color values) */
+/* Theme tokens */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -64,19 +55,6 @@ body {
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: oklch(var(--ring));
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: oklch(var(--sidebar-primary));
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: oklch(var(--sidebar-accent));
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -91,10 +69,9 @@ body {
     font-weight: 400;
 
     color-scheme: light;
-    color: var(--foreground, color-mix(in oklch, oklch(0.21 0.007 258) 78%, oklch(0.549 0.194 262.5) 22%));
-    background-color: var(--background, color-mix(in oklch, oklch(1 0 0) 92%, oklch(0.549 0.194 262.5) 8%));
+    color: var(--foreground);
+    background-color: var(--background);
 
-    /* Values without "oklch()" wrappers are raw oklch values that can be dynamically set by JS */
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -106,31 +83,18 @@ body {
     --card-foreground: var(--foreground);
     --popover: color-mix(in oklch, var(--background) 98%, var(--foreground) 2%);
     --popover-foreground: var(--foreground);
-    --primary: 0.549 0.194 262.5;
-    --primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(0.549 0.194 262.5) 5%);
-    --secondary: 0.63 0.14 262.5;
-    --secondary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(0.549 0.194 262.5) 5%);
-    --muted: color-mix(in oklch, var(--background) 85%, oklch(0.549 0.194 262.5) 15%);
-    --muted-foreground: color-mix(in oklch, var(--foreground) 75%, oklch(73.978% 0.14292 73.625) 25%);
-    --accent: 0.582 0.223 306.3;
-    --accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(0.582 0.223 306.3) 5%);
+    --primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--primary)) 5%);
+    --secondary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--secondary)) 5%);
+    --accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--accent)) 5%);
     --destructive: oklch(0.577 0.245 27.325);
-    --border: color-mix(in oklch, var(--foreground) 12%, var(--background));
-    --input: color-mix(in oklch, var(--foreground) 12%, var(--background));
-    --ring: 0.549 0.194 262.5;
-    --chart-1: oklch(0.646 0.222 41.116);
-    --chart-2: oklch(0.6 0.118 184.704);
-    --chart-3: oklch(0.398 0.07 227.392);
-    --chart-4: oklch(0.828 0.189 84.429);
-    --chart-5: oklch(0.769 0.188 70.08);
-    --sidebar: color-mix(in oklch, var(--background) 93%, var(--foreground) 7%);
+    --ring: oklch(var(--ring));
     --sidebar-foreground: var(--foreground);
-    --sidebar-primary: 0.549 0.194 262.5;
-    --sidebar-primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(0.549 0.194 262.5) 5%);
-    --sidebar-accent: 0.582 0.223 306.3;
-    --sidebar-accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(0.582 0.223 306.3) 5%);
-    --sidebar-border: color-mix(in oklch, var(--foreground) 12%, var(--background));
-    --sidebar-ring: color-mix(in oklch, var(--foreground) 30%, var(--background));
+    --sidebar-primary: oklch(var(--sidebar-primary));
+    --sidebar-primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--sidebar-primary)) 5%);
+    --sidebar-accent: oklch(var(--sidebar-accent));
+    --sidebar-accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--sidebar-accent)) 5%);
+    --sidebar-border: var(--sidebar-border);
+    --sidebar-ring: var(--sidebar-ring);
   }
 
   .dark {
@@ -141,24 +105,18 @@ body {
     --card-foreground: var(--foreground);
     --popover: color-mix(in oklch, var(--background) 88%, var(--foreground) 12%);
     --popover-foreground: var(--foreground);
-    --primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(0.549 0.194 262.5) 5%);
-    --secondary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(0.549 0.194 262.5) 5%);
-    --muted-foreground: color-mix(in oklch, var(--foreground) 80%, oklch(0.549 0.194 262.5) 20%);
-    --accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(0.582 0.223 306.3) 5%);
+    --primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--primary)) 5%);
+    --secondary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--secondary)) 5%);
+    --accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--accent)) 5%);
     --destructive: oklch(0.704 0.191 22.216);
-    --border: color-mix(in oklch, var(--foreground) 12%, var(--background));
-    --input: color-mix(in oklch, var(--foreground) 12%, var(--background));
-    --chart-1: oklch(0.488 0.243 264.376);
-    --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: color-mix(in oklch, var(--background) 88%, var(--foreground) 12%);
+    --ring: oklch(var(--ring));
     --sidebar-foreground: var(--foreground);
-    --sidebar-primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(0.549 0.194 262.5) 5%);
-    --sidebar-accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(0.582 0.223 306.3) 5%);
-    --sidebar-border: color-mix(in oklch, var(--foreground) 12%, var(--background));
-    --sidebar-ring: color-mix(in oklch, var(--foreground) 30%, var(--background));
+    --sidebar-primary: oklch(var(--sidebar-primary));
+    --sidebar-primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--sidebar-primary)) 5%);
+    --sidebar-accent: oklch(var(--sidebar-accent));
+    --sidebar-accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--sidebar-accent)) 5%);
+    --sidebar-border: var(--sidebar-border);
+    --sidebar-ring: var(--sidebar-ring);
   }
 
   * {
@@ -168,8 +126,6 @@ body {
   body {
     @apply bg-background text-foreground;
     margin: 0;
-    /* display: flex;
-    place-items: center; */
     min-width: 320px;
     min-height: 100vh;
   }
@@ -180,48 +136,48 @@ body {
   }
 }
 
-/* ============================================
-   CRT / TERMINAL EFFECTS
-   ============================================ */
-
-/* CRT flicker animation */
-@keyframes crt-flicker {
-  0% {
-    opacity: 0.97;
+/* === TYPING ANIMATION === */
+@keyframes typing {
+  from {
+    width: 0;
   }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.98;
+  to {
+    width: 100%;
   }
 }
 
-/* Cursor blink animation for terminal feel */
-@keyframes cursor-blink {
+@keyframes blink-caret {
   0%, 100% {
-    opacity: 1;
+    border-color: transparent;
   }
   50% {
-    opacity: 0;
+    border-color: oklch(var(--primary));
   }
 }
 
-/* Subtle glow pulse for accents */
-@keyframes glow-pulse {
-  0%, 100% {
-    text-shadow: 0 0 4px oklch(var(--primary) / 0.15);
-  }
-  50% {
-    text-shadow: 0 0 12px oklch(var(--primary) / 0.35);
-  }
+.typing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid oklch(var(--primary));
+  animation:
+    typing var(--typing-duration, 2s) steps(40, end),
+    blink-caret 0.75s step-end infinite;
+  animation-delay: var(--typing-delay, 0.3s);
+  width: 0;
+  display: inline-block;
+  vertical-align: bottom;
 }
 
-/* Fade-in for sections on scroll */
+.typing-text.complete {
+  width: var(--text-width, auto);
+  border-color: transparent;
+}
+
+/* Fade-in on scroll */
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -229,86 +185,6 @@ body {
   }
 }
 
-/* Blinking cursor */
-.cursor-blink::after {
-  content: '█';
-  animation: cursor-blink 1s step-end infinite;
-  color: oklch(var(--primary));
-  margin-left: 2px;
-}
-
-/* Glow pulse for primary text */
-.glow-pulse {
-  animation: glow-pulse 3s ease-in-out infinite;
-}
-
-/* ============================================
-   TERMINAL-SPECIFIC UTILITY CLASSES
-   ============================================ */
-
-/* ASCII-style box border */
-.terminal-box {
-  border: 1px solid oklch(var(--border));
-  position: relative;
-}
-
-.terminal-box::before {
-  content: '+';
-  position: absolute;
-  top: -0.5rem;
-  left: -0.5rem;
-  color: oklch(var(--primary));
-  font-size: 0.75rem;
-}
-
-.terminal-box::after {
-  content: '+';
-  position: absolute;
-  bottom: -0.5rem;
-  right: -0.5rem;
-  color: oklch(var(--primary));
-  font-size: 0.75rem;
-}
-
-/* Monospace block */
-.terminal-block {
-  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  background: oklch(var(--muted) / 0.15);
-  border: 1px solid oklch(var(--border));
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-/* Section fade-in on scroll */
-.fade-in-section {
+.fade-in {
   animation: fade-in-up 0.6s ease-out both;
-}
-
-/* Hover line that expands from left */
-.hover-line::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: oklch(var(--primary));
-  transform: scaleY(0);
-  transition: transform 0.2s ease;
-}
-
-.hover-line:hover::before {
-  transform: scaleY(1);
-}
-
-/* ============================================
-   PRINT STYLES — strip CRT effects for printing
-   ============================================ */
-@media print {
-  .crt-overlay,
-  [data-crt-overlay] {
-    display: none !important;
-  }
 }
