@@ -9,7 +9,7 @@ const skills = [
 
 export function Home() {
   return (
-    <div className="px-4">
+    <div className="px-12">
       {/* Hero Section */}
       <section className="my-16 min-h-[65vh] flex flex-col justify-center">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
@@ -59,7 +59,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* What I Do — Terminal Manifest Style (NO CARDS) */}
+      {/* Skills */}
       <section className="my-16 border-t border-border">
         <h2 className="mb-8 text-2xl font-bold text-primary underline decoration-double underline-offset-4">
           {'[SYSTEM_CAPABILITIES]'}

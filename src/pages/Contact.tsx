@@ -5,12 +5,12 @@ const contactLinks = [
   { label: "EMAIL", icon: Mail, value: "kevanoullio@example.com", href: "mailto:kevanoullio@example.com" },
   { label: "GITHUB", icon: Github, value: "@kevanoullio", href: "https://github.com/kevanoullio" },
   { label: "LINKEDIN", icon: Linkedin, value: "Kevin Ulliac", href: "https://linkedin.com/in/kevanoullio" },
-  { label: "LOCATION", icon: MapPin, value: "Earth", href: null },
+  { label: "LOCATION", icon: MapPin, value: "Edmonton, AB, Canada", href: null },
 ]
 
 export function Contact() {
   return (
-    <div className="px-4">
+    <div className="px-12">
       <section className="my-16 text-center">
         <div className="mb-4 text-muted-foreground text-sm tracking-widest uppercase">
           {'// CONNECTION_REQUEST: INITIATED'}
@@ -106,7 +106,7 @@ export function Contact() {
           <div className="mt-12 p-4 border border-border bg-muted/20">
             <p className="text-xs text-muted-foreground font-mono">
               <span className="text-primary">{'>'}</span> Waiting for your message...<br />
-              <span className="text-primary">{'>'}</span> Response time: usually within 24h<br />
+              <span className="text-primary">{'>'}</span> Response time: usually within 1-2 business days<br />
               <span className="text-primary">{'>'}</span> Languages: EN, FR
             </p>
           </div>

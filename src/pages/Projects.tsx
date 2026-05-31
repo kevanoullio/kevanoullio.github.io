@@ -2,12 +2,12 @@ import { Github, ExternalLink, Folder } from "lucide-react"
 
 const projects = [
   {
-    title: "Vintique Sound (WIP)",
+    title: "Vintique Sound (work in progress)",
     description: "A responsive mostly static website for my music business.",
     image: "/project_cards/vintique_sound_website-preview.png",
-    tags: ["Website", "React", "Tailwind CSS", "Astro"],
+    tags: ["Website", "Astro", "React", "Tailwind CSS"],
     categories: ["Website", "Music", "Audio Engineering"],
-    technologies: ["React", "Tailwind CSS", "Astro"],
+    technologies: ["Astro", "TypeScript", "React", "Tailwind CSS"],
     role: "Sole Developer (all code)",
     liveUrl: "https://vintiquesound.netlify.app/"
   },
@@ -46,7 +46,7 @@ const projects = [
 
 export function Projects() {
   return (
-    <div className="px-4">
+    <div className="px-12">
       <section className="my-16 text-center">
         <div className="mb-4 text-muted-foreground text-sm tracking-widest uppercase">
           {'// LOG_ARCHIVE: PROJECT_ENTRIES'}
@@ -80,7 +80,7 @@ export function Projects() {
                   <p className="mb-3 text-muted-foreground italic">
                     {`"${project.description}"`}
                   </p>
-                  
+
                   {/* Role / Metadata */}
                   <p className="mb-3 text-xs text-muted-foreground tracking-wider uppercase">
                     <span className="text-primary">role:</span> {project.role}

@@ -50,7 +50,7 @@ export function Navbar() {
           onClick={(e) => { e.preventDefault(); handleNavClick("#home"); }}
           className="flex items-center space-x-2 text-primary"
         >
-          <span className="text-lg font-bold tracking-wider">[KEVANO]</span>
+          <span className="text-lg font-bold tracking-wider">[KEVANOULLIO]</span>
         </a>
 
         {/* Desktop Navigation */}
