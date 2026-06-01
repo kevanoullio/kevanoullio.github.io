@@ -68,7 +68,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [])
 
   return (
-    <ThemeContext.Provider value={{ permIndex, isDark, theme, setTheme, next, prev }}>
+    <ThemeContext.Provider value={{ permIndex, setPermIndex, isDark, theme, setTheme, next, prev }}>
       {children}
     </ThemeContext.Provider>
   )

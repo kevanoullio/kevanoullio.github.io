@@ -4,6 +4,7 @@ export type Mode = "light" | "dark" | "system"
 
 export interface ThemeContextType {
   permIndex: number
+  setPermIndex: (index: number) => void
   isDark: boolean
   theme: Mode
   setTheme: (theme: Mode) => void

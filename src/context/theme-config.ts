@@ -15,12 +15,12 @@ export type BaseColor = keyof typeof BASE_COLORS
 // ============================================
 
 export const PERMUTATIONS: { primary: BaseColor; secondary: BaseColor; accent: BaseColor }[] = [
-  { primary: "cyan", secondary: "rose", accent: "amber" },
   { primary: "cyan", secondary: "amber", accent: "rose" },
-  { primary: "rose", secondary: "cyan", accent: "amber" },
-  { primary: "rose", secondary: "amber", accent: "cyan" },
+  { primary: "cyan", secondary: "rose", accent: "amber" },
   { primary: "amber", secondary: "cyan", accent: "rose" },
   { primary: "amber", secondary: "rose", accent: "cyan" },
+  { primary: "rose", secondary: "cyan", accent: "amber" },
+  { primary: "rose", secondary: "amber", accent: "cyan" },
 ]
 
 export const NUM_PERMUTATIONS = PERMUTATIONS.length

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Button } from "./ui/button"
 import { ThemeToggle } from "./ThemeToggle"
+import { ThemeColorDropdown } from "./ThemeColorDropdown"
 import { ThemeModeDropdown } from "./ThemeModeDropdown"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -78,13 +79,15 @@ export function Navbar() {
           <ThemeModeDropdown />
         </div>
 
-        {/* Mid-size: mode dropdown only */}
+        {/* Mid-size: color dropdown + mode dropdown */}
         <div className="hidden md:flex lg:hidden items-center gap-2">
+          <ThemeColorDropdown />
           <ThemeModeDropdown />
         </div>
 
         {/* Mobile Navigation Toggle — shows at <768px */}
         <div className="flex items-center gap-2 md:hidden">
+          <ThemeColorDropdown />
           <ThemeModeDropdown />
           <Button
             variant="ghost"
@@ -117,9 +120,6 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
-            <div className="mt-4 flex items-center justify-center gap-3 pt-4 border-t border-border">
-              <ThemeToggle />
-            </div>
           </div>
         </div>
       )}
