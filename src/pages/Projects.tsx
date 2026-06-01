@@ -1,5 +1,6 @@
 import { Section } from "@/components/Section"
-import { Github, ExternalLink, Folder } from "lucide-react"
+import { ExternalLink, Folder } from "lucide-react"
+import { LuGithub } from "react-icons/lu"
 
 const projects = [
   {
@@ -109,7 +110,7 @@ export function Projects() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-1 text-muted-foreground hover:text-secondary transition-colors"
                       >
-                        <Github className="h-3 w-3" />
+                        <LuGithub className="h-3 w-3" />
                         <span>Source</span>
                       </a>
                     )}

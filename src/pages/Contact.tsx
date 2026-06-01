@@ -1,11 +1,12 @@
-import { Send, Mail, MapPin, Github, Linkedin } from "lucide-react"
+import { Send, Mail, MapPin } from "lucide-react"
+import { LuGithub, LuLinkedin } from "react-icons/lu"
 import { Button } from "@/components/ui/button"
 import { Section } from "@/components/Section"
 
 const contactLinks = [
   { label: "EMAIL", icon: Mail, value: "kevanoullio@example.com", href: "mailto:kevanoullio@example.com" },
-  { label: "GITHUB", icon: Github, value: "@kevanoullio", href: "https://github.com/kevanoullio" },
-  { label: "LINKEDIN", icon: Linkedin, value: "Kevin Ulliac", href: "https://linkedin.com/in/kevanoullio" },
+  { label: "GITHUB", icon: LuGithub, value: "@kevanoullio", href: "https://github.com/kevanoullio" },
+  { label: "LINKEDIN", icon: LuLinkedin, value: "Kevin Ulliac", href: "https://linkedin.com/in/kevanoullio" },
   { label: "LOCATION", icon: MapPin, value: "Edmonton, AB, Canada", href: null },
 ]
 

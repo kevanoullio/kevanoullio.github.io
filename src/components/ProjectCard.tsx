@@ -1,5 +1,6 @@
 import * as React from "react"
-import { ExternalLink, Github, X } from "lucide-react"
+import { ExternalLink, X } from "lucide-react"
+import { LuGithub } from "react-icons/lu"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -88,7 +89,7 @@ export function ProjectCard({ title, description, image, tags = [], categories =
                 asChild
               >
                 <a href={repoUrl} target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-4 w-4" />
+                  <LuGithub className="mr-2 h-4 w-4" />
                   Code
                 </a>
               </Button>
@@ -190,7 +191,7 @@ export function ProjectCard({ title, description, image, tags = [], categories =
                         asChild
                       >
                         <a href={repoUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="mr-2 h-4 w-4" />
+                          <LuGithub className="mr-2 h-4 w-4" />
                           Code
                         </a>
                       </Button>

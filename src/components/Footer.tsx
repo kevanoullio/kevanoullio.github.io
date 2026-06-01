@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail } from "lucide-react"
+import { Mail } from "lucide-react"
+import { LuGithub, LuLinkedin } from "react-icons/lu"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -22,7 +23,7 @@ export function Footer() {
               className="text-muted-foreground transition-colors hover:text-secondary"
               aria-label="GitHub"
             >
-              <Github className="h-5 w-5" />
+              <LuGithub className="h-5 w-5" />
             </a>
             <a
               href="https://www.linkedin.com/in/kevinulliac/"
@@ -31,7 +32,7 @@ export function Footer() {
               className="text-muted-foreground transition-colors hover:text-secondary"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-5 w-5" />
+              <LuLinkedin className="h-5 w-5" />
             </a>
             <a
               href="mailto:kevanoullio@outlook.com"
