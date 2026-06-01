@@ -1,13 +1,18 @@
-import { Code2, TabletSmartphone, Terminal, CpuIcon, BotIcon } from "lucide-react"
+import { Code2, Server, Database, Workflow, TabletSmartphone, BookType, Terminal, PiIcon, CpuIcon, BotIcon } from "lucide-react"
 import { Section } from "@/components/Section"
 import { TypingText } from "@/components/TypingText"
 
 const skills = [
-  { label: "FULL_STACK", icon: Code2, value: "Astro, React, Node.js, Javascript, TypeScript, SQL, NoSQL, GitHub Actions" },
+  { label: "FRONTEND", icon: Code2, value: "HTML, CSS, Tailwind CSS, Javascript, TypeScript, Astro, React" },
+  { label: "BACKEND", icon: Server, value: "Javascript, TypeScript, Python, Java, C#, Node.js, npm, pnpm" },
+  { label: "DATABASE", icon: Database, value: "PostgreSQL, MySQL, SQLite, MongoDB, Supabase, Firebase" },
   { label: "MOBILE", icon: TabletSmartphone, value: "Android Studio, Kotlin, Gradle, Jetpack Compose, Flutter" },
-  { label: "CLI_TOOLS", icon: Terminal, value: "Python, Java, C, Bash" },
-  { label: "ML", icon: CpuIcon, value: "Linear Algebra, Vectors, Matrices, Calculus, Tensorflow, Keras" },
+  { label: "DEVOPS", icon: Workflow, value: "Git, GitHub Actions" },
+  { label: "CLI_TOOLS", icon: Terminal, value: "Lazygit, Neovim, Vim," },
+  { label: "LANGUAGES", icon: BookType, value: "C, Bash" },
+  { label: "ML", icon: CpuIcon, value: "Tensorflow, Keras" },
   { label: "AI", icon: BotIcon, value: "Claude Code, GitHub Copilot, Opencode, LM Studio, Ollama" },
+  { label: "MATHEMATICS", icon: PiIcon, value: "Linear Algebra, Vectors, Matrices, Calculus" },
 ]
 
 export function Skills() {
