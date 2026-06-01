@@ -15,6 +15,19 @@ const skills = [
   { label: "MATHEMATICS", icon: PiIcon, value: "Linear Algebra, Vectors, Matrices, Calculus" },
 ]
 
+const accentColors = [
+  "text-accent",
+  "text-accent",
+  "text-accent",
+  "text-accent",
+  "text-accent",
+  "text-accent",
+  "text-accent",
+  "text-accent",
+  "text-accent",
+  "text-accent",
+]
+
 export function Skills() {
   return (
     <Section id="skills" innerClassName="border-t border-border">
@@ -23,12 +36,12 @@ export function Skills() {
           text="[SYSTEM_CAPABILITIES]"
           speed={80}
           delay={200}
-          className="text-2xl font-bold text-primary"
+          className="text-2xl font-bold text-accent"
         />
       </div>
 
       <div className="space-y-6 ml-4 border-l-2 border-dashed border-border/50 pl-6">
-        {skills.map((skill) => {
+        {skills.map((skill, i) => {
           const Icon = skill.icon
           return (
             <div
@@ -36,11 +49,11 @@ export function Skills() {
               className="group transition-colors hover:text-secondary"
             >
               <div className="flex items-center gap-3 mb-1">
-                <Icon className="h-5 w-5 text-primary" />
-                <span className="text-lg font-bold tracking-wider">
+                <Icon className={`h-5 w-5 ${accentColors[i]}`} />
+                <span className="text-lg font-bold tracking-wider text-secondary">
                   {skill.label}
                 </span>
-                <span className="text-secondary text-sm">
+                <span className="text-muted-foreground text-sm">
                   {'::'}
                 </span>
               </div>

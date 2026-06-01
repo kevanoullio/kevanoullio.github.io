@@ -49,10 +49,10 @@ export function Projects() {
   return (
     <Section id="projects">
       <section className="my-16 text-center">
-        <div className="mb-4 text-muted-foreground text-sm tracking-widest uppercase">
+        <div className="mb-4 text-secondary text-sm tracking-widest uppercase">
           {'// LOG_ARCHIVE: PROJECT_ENTRIES'}
         </div>
-        <h1 className="mb-4 text-4xl font-bold">My Projects</h1>
+        <h1 className="mb-4 text-4xl font-bold text-secondary">My Projects</h1>
         <p className="mx-auto max-w-2xl text-muted-foreground">
           Here are some of the projects I've worked on. Each one represents a unique challenge
           and learning experience. Click on any project to explore its code on GitHub.
@@ -68,12 +68,12 @@ export function Projects() {
             >
               {/* Project Header */}
               <div className="px-4 py-6 flex items-start gap-4">
-                <span className="text-muted-foreground text-sm font-mono mt-1">
+                <span className="text-secondary text-sm font-mono mt-1">
                   {String(index + 1).padStart(2, '0')}.
                 </span>
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <Folder className="h-4 w-4 text-primary" />
+                    <Folder className="h-4 w-4 text-accent" />
                     <h3 className="text-xl font-bold text-accent group-hover:text-secondary transition-colors">
                       {`>> ${project.title}`}
                     </h3>
@@ -83,16 +83,17 @@ export function Projects() {
                   </p>
 
                   {/* Role / Metadata */}
-                  <p className="mb-3 text-xs text-muted-foreground tracking-wider uppercase">
-                    <span className="text-primary">role:</span> {project.role}
+                  <p className="mb-3 text-xs tracking-wider uppercase">
+                    <span className="text-secondary">role:</span>{' '}
+                    <span className="text-foreground">{project.role}</span>
                   </p>
 
-                  {/* Technology tags — no cards, just inline brackets */}
+                  {/* Technology tags — colored borders */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="text-xs border border-border/60 px-2 py-0.5 tracking-wider"
+                        className="text-xs border border-accent/30 text-accent px-2 py-0.5 tracking-wider"
                       >
                         [{tech}]
                       </span>
@@ -126,10 +127,10 @@ export function Projects() {
                   </div>
                 </div>
 
-                {/* Preview image — shown on hover or always on the right */}
+                {/* Preview image */}
                 {project.image && (
                   <div className="hidden lg:block w-48 shrink-0">
-                    <div className="border border-border p-1">
+                    <div className="border border-accent/20 p-1">
                       <img
                         src={project.image}
                         alt={project.title}

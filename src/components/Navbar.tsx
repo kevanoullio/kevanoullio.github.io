@@ -17,7 +17,6 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState("#home")
   const observerRef = useRef<IntersectionObserver | null>(null)
 
-  // IntersectionObserver to track which section is in view
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]")
     observerRef.current = new IntersectionObserver(
@@ -44,7 +43,7 @@ export function Navbar() {
 
   return (
     <nav className="sticky top-0 z-1000 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="mx-auto flex h-16 w-full max-w-screen-2xl items-center justify-between px-4">
         {/* Brand */}
         <a
           href="#home"
@@ -54,8 +53,8 @@ export function Navbar() {
           <span className="text-lg font-bold tracking-wider">[KEVANOULLIO]</span>
         </a>
 
-        {/* Desktop Navigation — centered */}
-        <div className="hidden lg:flex lg:items-center lg:gap-6 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+        {/* Desktop Navigation — centered, shows at md: */}
+        <div className="hidden md:flex md:items-center md:gap-6 md:absolute md:left-1/2 md:-translate-x-1/2">
           {navLinks.map((link) => (
             <a
               key={link.path}
@@ -73,13 +72,18 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Right side — theme controls */}
+        {/* Right side — theme controls, shows at lg: */}
         <div className="hidden lg:flex lg:items-center lg:gap-3">
           <ThemeToggle />
           <ThemeModeDropdown />
         </div>
 
-        {/* Mobile Navigation Toggle */}
+        {/* Mid-size: mode dropdown only */}
+        <div className="hidden md:flex lg:hidden items-center gap-2">
+          <ThemeModeDropdown />
+        </div>
+
+        {/* Mobile Navigation Toggle — shows at <768px */}
         <div className="flex items-center gap-2 md:hidden">
           <ThemeModeDropdown />
           <Button
@@ -94,9 +98,9 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobile Navigation Menu — shows at <1280px */}
       {mobileMenuOpen && (
-        <div className="border-t border-border md:hidden">
+        <div className="border-t border-border xl:hidden">
           <div className="container mx-auto px-4 py-4">
             {navLinks.map((link) => (
               <a
@@ -113,7 +117,7 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
-            <div className="mt-4 flex items-center justify-center gap-3 pt-4">
+            <div className="mt-4 flex items-center justify-center gap-3 pt-4 border-t border-border">
               <ThemeToggle />
             </div>
           </div>

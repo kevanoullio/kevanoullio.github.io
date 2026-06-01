@@ -39,6 +39,8 @@ export const applyThemeTokens = (
   const secondary = BASE_COLORS[perm.secondary]
   const accent = BASE_COLORS[perm.accent]
 
+  const brighten = (l: number, amount: number) => Math.min(l + amount, 0.95)
+
   // Background / foreground
   const bg = isDark ? "0.10 0.005 250" : "0.95 0.003 250"
   const fg = isDark ? "0.95 0.005 250" : "0.20 0.008 250"
@@ -59,6 +61,13 @@ export const applyThemeTokens = (
   root.style.setProperty("--popover", popover)
   root.style.setProperty("--popover-foreground", `oklch(${fg})`)
 
+  // Primary
+  const primaryParts = primary.split(" ").map(Number)
+  const primaryVal = isDark
+    ? `${brighten(primaryParts[0], 0.12)} ${primaryParts[1]} ${primaryParts[2]}`
+    : primary
+  root.style.setProperty("--primary", primaryVal)
+
   // Foreground mixing for card/button text
   const fgMix = isDark
     ? `color-mix(in oklch, oklch(1 0 0) 95%, oklch(${primary}) 5%)`
@@ -77,18 +86,26 @@ export const applyThemeTokens = (
   root.style.setProperty("--muted", muted)
   root.style.setProperty("--muted-foreground", mutedFg)
 
-  // Secondary
-  root.style.setProperty("--secondary", `oklch(${secondary})`)
+  // Secondary — brighter in dark mode for visibility
+  const secParts = secondary.split(" ").map(Number)
+  const secondaryVal = isDark
+    ? `${brighten(secParts[0], 0.15)} ${secParts[1]} ${secParts[2]}`
+    : secondary
+  root.style.setProperty("--secondary", secondaryVal)
 
-  // Accent
-  root.style.setProperty("--accent", `oklch(${accent})`)
+  // Accent — brightest in dark mode for emphasis
+  const accParts = accent.split(" ").map(Number)
+  const accentVal = isDark
+    ? `${brighten(accParts[0], 0.2)} ${accParts[1]} ${accParts[2]}`
+    : accent
+  root.style.setProperty("--accent", accentVal)
 
   // Destructive
   const destructive = isDark ? "0.704 0.191 22.216" : "0.577 0.245 27.325"
   root.style.setProperty("--destructive", destructive)
 
   // Ring
-  root.style.setProperty("--ring", `oklch(${primary})`)
+  root.style.setProperty("--ring", primaryVal)
 
   // Borders
   const border = isDark
@@ -103,10 +120,10 @@ export const applyThemeTokens = (
     : `color-mix(in oklch, oklch(${bg}) 94%, oklch(${fg}) 6%)`
   root.style.setProperty("--sidebar", sidebar)
   root.style.setProperty("--sidebar-foreground", `oklch(${fg})`)
-  root.style.setProperty("--sidebar-primary", `oklch(${primary})`)
-  root.style.setProperty("--sidebar-accent", `oklch(${accent})`)
+  root.style.setProperty("--sidebar-primary", `oklch(${primaryVal})`)
+  root.style.setProperty("--sidebar-accent", `oklch(${accentVal})`)
   root.style.setProperty("--sidebar-border", border)
-  root.style.setProperty("--sidebar-ring", `oklch(${primary})`)
+  root.style.setProperty("--sidebar-ring", `oklch(${primaryVal})`)
   root.style.setProperty("--sidebar-primary-foreground", fgMix)
   root.style.setProperty("--sidebar-accent-foreground", fgMix)
 

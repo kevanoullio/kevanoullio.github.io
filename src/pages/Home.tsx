@@ -11,6 +11,8 @@ export function Home() {
         <div className="shrink-0">
           <div className="relative">
             <div className="absolute inset-0 border-2 border-primary/30 rounded-lg" />
+            <div className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full border-2 border-accent/40 bg-accent/10" />
+            <div className="absolute -top-2 -left-2 h-5 w-5 rounded-full border-2 border-secondary/40 bg-secondary/10" />
             <img
               src="/kevano_phonebooth.jpg"
               alt="Kevin Ulliac"
@@ -23,11 +25,11 @@ export function Home() {
 
         {/* Hero content */}
         <div className="flex-1 text-center lg:text-left">
-          <div className="mb-4 text-muted-foreground text-sm tracking-widest uppercase">
+          <div className="mb-4 text-secondary text-sm tracking-widest uppercase">
             {'// SYSTEM_BOOT: user_profile_loaded'}
           </div>
           <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            <span className="text-muted-foreground">{'>'}</span>{' '}
+            <span className="text-secondary">{'>'}</span>{' '}
             <span className="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
               <TypingText
                 text="Kevin Ulliac"
@@ -41,13 +43,13 @@ export function Home() {
             I love building applications that make a difference.
           </p>
           <div className="flex flex-col items-center lg:items-start gap-4">
-            <Button size="lg" variant="default" className="border border-primary/50">
+            <Button size="lg" variant="default" className="border border-primary/50 hover:border-accent/50">
               <a href="#projects" className="flex items-center gap-2">
                 <span>VIEW_WORK</span>
                 <ArrowRight className="h-4 w-4" />
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="border border-border">
+            <Button variant="outline" size="lg" className="border border-border hover:border-secondary/50">
               <a href="#contact" className="flex items-center gap-2">
                 <span>GET_IN_TOUCH</span>
               </a>

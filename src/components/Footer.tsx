@@ -8,7 +8,7 @@ export function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="flex flex-col items-center md:items-start">
-            <span className="text-lg font-semibold text-primary">Kevin Ulliac</span>
+            <span className="text-lg font-semibold text-accent">Kevin Ulliac</span>
             <p className="text-sm text-muted-foreground">
               Building software, one line at a time.
             </p>
@@ -45,9 +45,8 @@ export function Footer() {
 
         <div className="mt-6 border-t border-border pt-6 text-center">
           <p className="text-sm text-muted-foreground tracking-wider">
-            <span className="text-primary">{'>'}</span>
-            {' '}
-            <span className="uppercase">{'© '}{currentYear} kevanoullio // all_rights_reserved</span>
+            <span className="text-accent">{'>'}</span>{' '}
+            <span className="text-secondary uppercase">{'© '}{currentYear} kevanoullio // all_rights_reserved</span>
           </p>
           <p className="mt-2 text-xs text-muted-foreground/60 tracking-widest uppercase">
             built with react + vite + tailwind
