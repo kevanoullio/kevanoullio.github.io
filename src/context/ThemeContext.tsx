@@ -1,98 +1,75 @@
-import { useEffect, useState, type ReactNode } from "react"
+import { useEffect, useState, useCallback, type ReactNode } from "react"
 
-import {
-  applyColorTokens,
-  applySurfaceTokens,
-  colorThemeConfig,
-  type ColorTheme,
-} from "./theme-config"
+import { applyThemeTokens, NUM_PERMUTATIONS } from "./theme-config"
+import { ThemeContext } from "./theme-context"
 
-import { ThemeContext, type ThemeContextType } from "./theme-context"
-
-type Theme = "light" | "dark" | "system"
-type ResolvedTheme = "light" | "dark"
+type Mode = "light" | "dark" | "system"
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
+  const [permIndex, setPermIndex] = useState<number>(() => {
     try {
-      if (typeof window !== "undefined") {
-        return (localStorage.getItem("theme") as Theme) || "system"
+      const stored = localStorage.getItem("permIndex")
+      if (stored !== null) {
+        const n = parseInt(stored, 10)
+        if (n >= 0 && n < NUM_PERMUTATIONS) return n
       }
     } catch {
-      // localStorage may be unavailable in private browsing mode
+      // ignore
+    }
+    return 0
+  })
+
+  const [theme, setTheme] = useState<Mode>(() => {
+    try {
+      const stored = localStorage.getItem("theme") as Mode
+      if (stored && ["light", "dark", "system"].includes(stored)) return stored
+    } catch {
+      // ignore
     }
     return "system"
   })
 
-  const [colorTheme, setColorTheme] = useState<ColorTheme>(() => {
-    try {
-      if (typeof window !== "undefined") {
-        const stored = localStorage.getItem("colorTheme") as ColorTheme | null
-        if (stored && stored in colorThemeConfig) {
-          return stored
-        }
-      }
-    } catch {
-      // localStorage may be unavailable in private browsing mode
+  const [isDark, setIsDark] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
     }
-    return "amber" // amber is the default color
+    return false
   })
 
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return
-    }
+  const apply = useCallback(() => {
     const root = document.documentElement
-    const config = colorThemeConfig[colorTheme] || colorThemeConfig["amber"]
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-    const resolvedTheme: ResolvedTheme = theme === "system" ? (prefersDark ? "dark" : "light") : theme
-
-    // Remove all theme classes
-    root.classList.remove("light", "dark")
-    root.classList.add(resolvedTheme)
-    root.style.setProperty("color-scheme", resolvedTheme)
-
-    applySurfaceTokens(root, config, resolvedTheme)
-    applyColorTokens(root, config, resolvedTheme)
-
+    const resolved = theme === "system" ? (isDark ? "dark" : "light") : theme
+    applyThemeTokens(root, permIndex, resolved === "dark")
     try {
+      localStorage.setItem("permIndex", String(permIndex))
       localStorage.setItem("theme", theme)
     } catch {
-      // localStorage may be unavailable
+      // ignore
     }
+  }, [permIndex, theme, isDark])
 
-    try {
-      localStorage.setItem("colorTheme", colorTheme)
-    } catch {
-      // localStorage may be unavailable
-    }
-  }, [theme, colorTheme])
-
-  // Listen for system theme changes
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return
-    }
+    apply()
+  }, [apply])
+
+  useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
-
-    const handleChange = () => {
-      if (theme === "system") {
-        const resolvedTheme: ResolvedTheme = mediaQuery.matches ? "dark" : "light"
-        const root = document.documentElement
-        const config = colorThemeConfig[colorTheme] || colorThemeConfig["amber"]
-        root.classList.remove("light", "dark")
-        root.classList.add(resolvedTheme)
-        root.style.setProperty("color-scheme", resolvedTheme)
-        applySurfaceTokens(root, config, resolvedTheme)
-        applyColorTokens(root, config, resolvedTheme)
-      }
-    }
-
+    const handleChange = () => setIsDark(mediaQuery.matches)
     mediaQuery.addEventListener("change", handleChange)
     return () => mediaQuery.removeEventListener("change", handleChange)
-  }, [theme, colorTheme])
+  }, [])
 
-  const value: ThemeContextType = { theme, colorTheme, setTheme, setColorTheme }
+  const next = useCallback(() => {
+    setPermIndex((prev) => (prev + 1) % NUM_PERMUTATIONS)
+  }, [])
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  const prev = useCallback(() => {
+    setPermIndex((prev) => (prev - 1 + NUM_PERMUTATIONS) % NUM_PERMUTATIONS)
+  }, [])
+
+  return (
+    <ThemeContext.Provider value={{ permIndex, isDark, theme, setTheme, next, prev }}>
+      {children}
+    </ThemeContext.Provider>
+  )
 }

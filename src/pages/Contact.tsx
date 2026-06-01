@@ -84,14 +84,14 @@ export function Contact() {
                   <div className="flex items-center gap-3 mb-1">
                     <Icon className="h-4 w-4 text-primary" />
                     <span className="text-sm font-bold tracking-wider">{link.label}</span>
-                    <span className="text-muted-foreground text-xs">{'::'}</span>
+                    <span className="text-secondary text-xs">{'::'}</span>
                   </div>
                   {link.href ? (
                     <a
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground group-hover:text-primary transition-colors text-sm"
+                      className="text-muted-foreground group-hover:text-secondary transition-colors text-sm"
                     >
                       {link.value}
                     </a>

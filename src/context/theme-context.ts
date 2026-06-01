@@ -1,14 +1,14 @@
 import { createContext } from "react"
 
-import type { ColorTheme } from "./theme-config"
-
-type Theme = "light" | "dark" | "system"
+export type Mode = "light" | "dark" | "system"
 
 export interface ThemeContextType {
-  theme: Theme
-  colorTheme: ColorTheme
-  setTheme: (theme: Theme) => void
-  setColorTheme: (colorTheme: ColorTheme) => void
+  permIndex: number
+  isDark: boolean
+  theme: Mode
+  setTheme: (theme: Mode) => void
+  next: () => void
+  prev: () => void
 }
 
 export const ThemeContext = createContext<ThemeContextType | undefined>(undefined)

@@ -19,7 +19,7 @@ export function Footer() {
               href="https://github.com/kevanoullio"
               target="_blank"
               rel="noopener"
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="text-muted-foreground transition-colors hover:text-secondary"
               aria-label="GitHub"
             >
               <Github className="h-5 w-5" />
@@ -28,14 +28,14 @@ export function Footer() {
               href="https://www.linkedin.com/in/kevinulliac/"
               target="_blank"
               rel="noopener"
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="text-muted-foreground transition-colors hover:text-secondary"
               aria-label="LinkedIn"
             >
               <Linkedin className="h-5 w-5" />
             </a>
             <a
               href="mailto:kevanoullio@outlook.com"
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="text-muted-foreground transition-colors hover:text-secondary"
               aria-label="Email"
             >
               <Mail className="h-5 w-5" />

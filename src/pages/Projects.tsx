@@ -74,7 +74,7 @@ export function Projects() {
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
                     <Folder className="h-4 w-4 text-primary" />
-                    <h3 className="text-xl font-bold text-accent group-hover:text-primary transition-colors">
+                    <h3 className="text-xl font-bold text-accent group-hover:text-secondary transition-colors">
                       {`>> ${project.title}`}
                     </h3>
                   </div>
@@ -106,7 +106,7 @@ export function Projects() {
                         href={project.repoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors"
+                        className="flex items-center gap-1 text-muted-foreground hover:text-secondary transition-colors"
                       >
                         <Github className="h-3 w-3" />
                         <span>Source</span>
@@ -117,7 +117,7 @@ export function Projects() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors"
+                        className="flex items-center gap-1 text-muted-foreground hover:text-secondary transition-colors"
                       >
                         <ExternalLink className="h-3 w-3" />
                         <span>Live</span>

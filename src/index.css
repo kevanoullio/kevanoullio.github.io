@@ -32,9 +32,6 @@ body {
   background: oklch(var(--primary) / 0.5);
 }
 
-/* Tailwind v4 variant helper */
-@custom-variant dark (&:is(.dark *));
-
 /* Theme tokens */
 @theme inline {
   --color-background: var(--background);
@@ -77,46 +74,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     --radius: 0.5rem;
-    --background: oklch(96.436% 0.00276 84.305);
-    --foreground: oklch(0.21 0.007 258);
-    --card: color-mix(in oklch, var(--background) 96%, var(--foreground) 4%);
-    --card-foreground: var(--foreground);
-    --popover: color-mix(in oklch, var(--background) 98%, var(--foreground) 2%);
-    --popover-foreground: var(--foreground);
-    --primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--primary)) 5%);
-    --secondary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--secondary)) 5%);
-    --accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--accent)) 5%);
-    --destructive: oklch(0.577 0.245 27.325);
-    --ring: oklch(var(--ring));
-    --sidebar-foreground: var(--foreground);
-    --sidebar-primary: oklch(var(--sidebar-primary));
-    --sidebar-primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--sidebar-primary)) 5%);
-    --sidebar-accent: oklch(var(--sidebar-accent));
-    --sidebar-accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--sidebar-accent)) 5%);
-    --sidebar-border: var(--sidebar-border);
-    --sidebar-ring: var(--sidebar-ring);
-  }
-
-  .dark {
-    color-scheme: dark;
-    --background: oklch(0.21 0.007 258);
-    --foreground: oklch(1 0 0);
-    --card: color-mix(in oklch, var(--background) 90%, var(--foreground) 10%);
-    --card-foreground: var(--foreground);
-    --popover: color-mix(in oklch, var(--background) 88%, var(--foreground) 12%);
-    --popover-foreground: var(--foreground);
-    --primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--primary)) 5%);
-    --secondary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--secondary)) 5%);
-    --accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--accent)) 5%);
-    --destructive: oklch(0.704 0.191 22.216);
-    --ring: oklch(var(--ring));
-    --sidebar-foreground: var(--foreground);
-    --sidebar-primary: oklch(var(--sidebar-primary));
-    --sidebar-primary-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--sidebar-primary)) 5%);
-    --sidebar-accent: oklch(var(--sidebar-accent));
-    --sidebar-accent-foreground: color-mix(in oklch, oklch(1 0 0) 95%, oklch(var(--sidebar-accent)) 5%);
-    --sidebar-border: var(--sidebar-border);
-    --sidebar-ring: var(--sidebar-ring);
   }
 
   * {

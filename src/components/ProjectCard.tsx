@@ -34,7 +34,7 @@ export function ProjectCard({ title, description, image, tags = [], categories =
     <>
       <Card
         className={cn(
-          "flex flex-col overflow-hidden transition-all hover:shadow-lg hover:border-primary/50 gap-0 py-0",
+          "flex flex-col overflow-hidden transition-all hover:shadow-lg hover:border-secondary/50 gap-0 py-0",
           image && "pt-0"
         )}
       >
@@ -84,7 +84,7 @@ export function ProjectCard({ title, description, image, tags = [], categories =
               <Button
                 variant="outline"
                 size="sm"
-                className="bg-background text-foreground border-border hover:border-primary/60 hover:bg-muted hover:text-primary dark:bg-primary/8 dark:border-primary/28 dark:hover:bg-primary/12 dark:hover:border-primary/45"
+                className="bg-background text-foreground border-border hover:border-secondary/60 hover:bg-muted hover:text-secondary"
                 asChild
               >
                 <a href={repoUrl} target="_blank" rel="noopener noreferrer">
@@ -186,7 +186,7 @@ export function ProjectCard({ title, description, image, tags = [], categories =
                       <Button
                         variant="outline"
                         size="sm"
-                        className="bg-background text-foreground border-border hover:border-primary/60 hover:bg-muted hover:text-primary dark:bg-primary/8 dark:border-primary/28 dark:hover:bg-primary/12 dark:hover:border-primary/45"
+                className="bg-background text-foreground border-border hover:border-secondary/60 hover:bg-muted hover:text-secondary"
                         asChild
                       >
                         <a href={repoUrl} target="_blank" rel="noopener noreferrer">
@@ -209,7 +209,7 @@ export function ProjectCard({ title, description, image, tags = [], categories =
                       type="button"
                       variant="outline"
                       size="sm"
-                      className="shrink-0 hover:bg-primary/10 hover:text-primary"
+                      className="shrink-0 hover:bg-secondary/10 hover:text-secondary"
                       onClick={() => setIsOpen(false)}
                       aria-label="Close"
                     >

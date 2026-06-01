@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Button } from "./ui/button"
 import { ThemeToggle } from "./ThemeToggle"
+import { ThemeModeDropdown } from "./ThemeModeDropdown"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -53,8 +54,8 @@ export function Navbar() {
           <span className="text-lg font-bold tracking-wider">[KEVANOULLIO]</span>
         </a>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex md:items-center md:gap-6">
+        {/* Desktop Navigation — centered */}
+        <div className="hidden lg:flex lg:items-center lg:gap-6 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
           {navLinks.map((link) => (
             <a
               key={link.path}
@@ -64,24 +65,29 @@ export function Navbar() {
                 "text-sm font-medium tracking-wider transition-colors",
                 activeSection === link.path
                   ? "text-primary underline decoration-primary decoration-2 underline-offset-4"
-                  : "text-muted-foreground hover:text-primary"
+                  : "text-muted-foreground hover:text-secondary"
               )}
             >
               {link.name}
             </a>
           ))}
+        </div>
+
+        {/* Right side — theme controls */}
+        <div className="hidden lg:flex lg:items-center lg:gap-3">
           <ThemeToggle />
+          <ThemeModeDropdown />
         </div>
 
         {/* Mobile Navigation Toggle */}
         <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
+          <ThemeModeDropdown />
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
-            className="border border-primary/20 dark:border-primary/30 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
+            className="border border-primary/20 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -101,12 +107,15 @@ export function Navbar() {
                   "block py-2 text-center text-sm font-medium tracking-wider transition-colors",
                   activeSection === link.path
                     ? "text-primary underline decoration-primary decoration-2 underline-offset-4"
-                    : "text-muted-foreground hover:text-primary"
+                    : "text-muted-foreground hover:text-secondary"
                 )}
               >
                 {link.name}
               </a>
             ))}
+            <div className="mt-4 flex items-center justify-center gap-3 pt-4">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       )}

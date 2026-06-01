@@ -1,95 +1,56 @@
-import { Sun, Moon, Monitor, Palette } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useTheme } from "@/context/useTheme"
-import { colorThemeConfig } from "@/context/theme-config"
-import type { ColorTheme } from "@/context/theme-config"
+import { PERMUTATIONS } from "@/context/theme-config"
 
-const colorThemes: { name: string; value: ColorTheme }[] = [
-  { name: "Cyan", value: "cyan" },
-  { name: "Rose", value: "rose" },
-  { name: "Sage", value: "sage" },
-  { name: "Lavender", value: "lavender" },
-  { name: "Amber", value: "amber" },
-]
+const ROLE_LABELS = ["PRIMARY", "SECONDARY", "ACCENT"] as const
 
 export function ThemeToggle() {
-  const { theme, colorTheme, setTheme, setColorTheme } = useTheme()
-
-    const getCurrentIcon = () => {
-    switch (theme) {
-      case "light":
-        return <Sun className="h-4 w-4" />
-      case "dark":
-        return <Moon className="h-4 w-4" />
-      default:
-        return <Monitor className="h-4 w-4" />
-    }
-  }
+  const { permIndex, next, prev } = useTheme()
+  const perm = PERMUTATIONS[permIndex]
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="icon"
-          aria-label="Toggle theme"
-          className="bg-background text-foreground border-border hover:border-primary/60 dark:border-input dark:hover:border-primary/60 hover:bg-muted hover:text-primary"
-        >
-          {getCurrentIcon()}
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          <Sun className="mr-2 h-4 w-4" />
-          Light
-          {theme === "light" && <span className="ml-auto">✓</span>}
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <Moon className="mr-2 h-4 w-4" />
-          Dark
-          {theme === "dark" && <span className="ml-auto">✓</span>}
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          <Monitor className="mr-2 h-4 w-4" />
-          System
-          {theme === "system" && <span className="ml-auto">✓</span>}
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuLabel className="flex items-center">
-          <Palette className="mr-2 h-4 w-4" />
-          Color Theme
-        </DropdownMenuLabel>
-        <div className="flex gap-2 p-2">
-          {colorThemes.map((ct) => {
-            const config = colorThemeConfig[ct.value]
-            const style = {
-              backgroundColor: `oklch(${config.primary})`,
-            }
-            return (
-              <button
-                key={ct.value}
-                onClick={() => setColorTheme(ct.value)}
-                className={`h-6 w-6 rounded-full transition-transform hover:scale-110 ${
-                  colorTheme === ct.value ? "ring-2 ring-offset-2 ring-offset-background ring-foreground" : ""
-                }`}
-                style={style}
-                title={ct.name}
-                aria-label={`Set ${ct.name} color theme`}
+    <div className="flex items-center gap-1.5">
+      <button
+        onClick={prev}
+        aria-label="Previous color theme"
+        className="flex h-8 w-8 items-center justify-center rounded-md text-foreground/60 hover:text-secondary hover:bg-muted transition-colors"
+      >
+        <ChevronLeft className="h-4 w-4" />
+      </button>
+
+      <div className="flex items-center gap-2 px-2 py-1">
+        {ROLE_LABELS.map((role) => {
+          const colorKey = perm[role.toLowerCase() as "primary" | "secondary" | "accent"]
+          const bgMap: Record<string, string> = {
+            cyan: "oklch(0.65 0.12 195)",
+            rose: "oklch(0.65 0.18 15)",
+            amber: "oklch(0.72 0.12 75)",
+          }
+          return (
+            <div key={role} className="flex flex-col items-center gap-0.5">
+              <span className="text-[9px] font-mono tracking-widest text-foreground/40 uppercase">
+                {role}
+              </span>
+              <div
+                className="h-5 w-5 rounded-full ring-1 ring-border/50"
+                style={{ backgroundColor: bgMap[colorKey] }}
               />
-            )
-          })}
-        </div>
-      </DropdownMenuContent>
-    </DropdownMenu>
+            </div>
+          )
+        })}
+      </div>
+
+      <button
+        onClick={next}
+        aria-label="Next color theme"
+        className="flex h-8 w-8 items-center justify-center rounded-md text-foreground/60 hover:text-secondary hover:bg-muted transition-colors"
+      >
+        <ChevronRight className="h-4 w-4" />
+      </button>
+
+      <span className="ml-1 font-mono text-xs text-foreground/40">
+        {permIndex + 1} / {PERMUTATIONS.length}
+      </span>
+    </div>
   )
 }

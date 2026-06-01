@@ -33,18 +33,18 @@ export function Skills() {
           return (
             <div
               key={skill.label}
-              className="group transition-colors hover:text-primary"
+              className="group transition-colors hover:text-secondary"
             >
               <div className="flex items-center gap-3 mb-1">
                 <Icon className="h-5 w-5 text-primary" />
                 <span className="text-lg font-bold tracking-wider">
                   {skill.label}
                 </span>
-                <span className="text-muted-foreground text-sm">
+                <span className="text-secondary text-sm">
                   {'::'}
                 </span>
               </div>
-              <p className="text-muted-foreground group-hover:text-foreground transition-colors">
+              <p className="text-muted-foreground group-hover:text-secondary transition-colors">
                 {skill.value}
               </p>
             </div>
