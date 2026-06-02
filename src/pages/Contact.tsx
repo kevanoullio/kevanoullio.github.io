@@ -1,3 +1,5 @@
+import { useState, useCallback } from "react"
+import type { FormEvent, ChangeEvent } from "react"
 import { Send, Mail, MapPin } from "lucide-react"
 import { LuGithub, LuLinkedin } from "react-icons/lu"
 import { Button } from "@/components/ui/button"
@@ -5,15 +7,76 @@ import { Section } from "@/components/Section"
 import { SectionPrompt } from "@/components/text/section-prompt"
 import { SectionTitle } from "@/components/text/section-title"
 import { SectionSubtitle } from "@/components/text/section-subtitle"
+import { Toast } from "@/components/Toast"
 
 const contactLinks = [
-  { label: "EMAIL", icon: Mail, value: "kevanoullio@example.com", href: "mailto:kevanoullio@example.com" },
+  { label: "EMAIL", icon: Mail, value: "kevanoullio@outlook.com", href: "mailto:kevanoullio@outlook.com" },
   { label: "GITHUB", icon: LuGithub, value: "@kevanoullio", href: "https://github.com/kevanoullio" },
   { label: "LINKEDIN", icon: LuLinkedin, value: "Kevin Ulliac", href: "https://linkedin.com/in/kevinulliac" },
   { label: "LOCATION", icon: MapPin, value: "Edmonton, AB, Canada", href: null },
 ]
 
+interface FormErrors {
+  name?: string
+  email?: string
+  message?: string
+}
+
 export function Contact() {
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [loading, setLoading] = useState(false)
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null)
+
+  const validate = useCallback((): boolean => {
+    const newErrors: FormErrors = {}
+
+    if (!name.trim()) {
+      newErrors.name = "Name is required"
+    }
+    if (!email.trim()) {
+      newErrors.email = "Email is required"
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Invalid email format"
+    }
+    if (!message.trim()) {
+      newErrors.message = "Message is required"
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }, [name, email, message])
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+
+    if (!validate()) return
+
+    setLoading(true)
+
+    const subject = encodeURIComponent("kevanoullio.github.io - Contact Form")
+    const body = encodeURIComponent(`A message from ${name.trim()} - ${email.trim()}\n\n${message.trim()}`)
+    const mailtoLink = `mailto:kevanoullio@outlook.com?subject=${subject}&body=${body}`
+
+    window.location.href = mailtoLink
+
+    setToast({ message: "Opening your email client...", type: "success" })
+    setName("")
+    setEmail("")
+    setMessage("")
+    setErrors({})
+    setLoading(false)
+  }
+
+  const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setter(e.target.value)
+    if (errors[e.target.id as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [e.target.id]: undefined }))
+    }
+  }
+
   return (
     <Section id="contact">
       <div className="mb-16 text-center">
@@ -25,55 +88,79 @@ export function Contact() {
       </div>
 
       <section className="my-16 grid md:grid-cols-2 gap-12">
-        {/* Contact Form — Terminal Input Style */}
+        {/* Contact Form */}
         <div>
           <h2 className="mb-6 text-xl font-bold text-accent underline decoration-double underline-offset-4">
             {'[SEND_MESSAGE]'}
           </h2>
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit} noValidate>
             <div>
               <label htmlFor="name" className="block text-sm text-secondary mb-1 tracking-wider">
-                {'> YOUR_NAME:'}
+                {'> YOUR_NAME: '}<span className="text-primary">*</span>
               </label>
               <input
                 id="name"
                 type="text"
-                className="w-full bg-transparent border border-border px-3 py-2 text-foreground focus:outline-none focus:border-accent transition-colors"
+                value={name}
+                onChange={handleInputChange(setName)}
+                className={`w-full bg-transparent border border-border px-3 py-2 text-foreground focus:outline-none focus:border-accent transition-colors ${errors.name ? "border-red-400" : ""}`}
                 placeholder="Enter your name"
               />
+              {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name}</p>}
             </div>
             <div>
               <label htmlFor="email" className="block text-sm text-secondary mb-1 tracking-wider">
-                {'> YOUR_EMAIL:'}
+                {'> YOUR_EMAIL: '}<span className="text-primary">*</span>
               </label>
               <input
                 id="email"
                 type="email"
-                className="w-full bg-transparent border border-border px-3 py-2 text-foreground focus:outline-none focus:border-accent transition-colors"
+                value={email}
+                onChange={handleInputChange(setEmail)}
+                className={`w-full bg-transparent border border-border px-3 py-2 text-foreground focus:outline-none focus:border-accent transition-colors ${errors.email ? "border-red-400" : ""}`}
                 placeholder="Enter your email"
               />
+              {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email}</p>}
             </div>
             <div>
               <label htmlFor="message" className="block text-sm text-secondary mb-1 tracking-wider">
-                {'> MESSAGE:'}
+                {'> MESSAGE: '}<span className="text-primary">*</span>
               </label>
               <textarea
                 id="message"
                 rows={6}
-                className="w-full bg-transparent border border-border px-3 py-2 text-foreground focus:outline-none focus:border-accent transition-colors resize-none"
+                value={message}
+                onChange={handleInputChange(setMessage)}
+                className={`w-full bg-transparent border border-border px-3 py-2 text-foreground focus:outline-none focus:border-accent transition-colors resize-none ${errors.message ? "border-red-400" : ""}`}
                 placeholder="Type your message..."
               />
+              {errors.message && <p className="text-xs text-red-400 mt-1">{errors.message}</p>}
             </div>
-            <Button theme="solid-primary" size="lg" className="w-full">
+            <Button
+              theme="solid-primary"
+              size="lg"
+              className="w-full"
+              disabled={loading}
+              type="submit"
+            >
               <span className="flex items-center gap-2">
-                <Send className="h-4 w-4" />
-                <span>SEND_MESSAGE</span>
+                {loading ? (
+                  <>
+                    <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                    <span>SENDING...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-4 w-4" />
+                    <span>SEND_MESSAGE</span>
+                  </>
+                )}
               </span>
             </Button>
           </form>
         </div>
 
-        {/* Contact Links — Terminal List Style */}
+        {/* Contact Links */}
         <div>
           <h2 className="mb-6 text-xl font-bold text-accent underline decoration-double underline-offset-4">
             {'[ADDRESS_BOOK]'}
@@ -115,6 +202,8 @@ export function Contact() {
           </div>
         </div>
       </section>
+
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
     </Section>
   )
 }
