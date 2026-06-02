@@ -35,10 +35,13 @@ export function Navbar() {
   }, [])
 
   const handleNavClick = (path: string) => {
-    setMobileMenuOpen(false)
+    // Close the mobile menu first, then scroll after DOM update
     const target = document.querySelector(path)
+    setMobileMenuOpen(false)
     if (target) {
-      target.scrollIntoView({ behavior: "smooth" })
+      requestAnimationFrame(() => {
+        target.scrollIntoView({ behavior: "smooth" })
+      })
     }
   }
 
