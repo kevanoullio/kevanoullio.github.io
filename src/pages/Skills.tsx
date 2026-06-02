@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 import {
-  Code2, Server, Database, TabletSmartphone, Workflow, Cloud, MonitorCloud,
-  BookType, CpuIcon, ChartSpline, BrainCircuit, BotIcon,
-  ChartScatter, ChartPie, PiIcon, Sigma, Wrench,
-  FlaskConical, Palette, Terminal, GraduationCap
+  Code2, Server, Database, TabletSmartphone, Palette, Workflow, Cloud, MonitorCloud,
+  GitMerge, FlaskConical, LockKeyhole, House, GraduationCap, Terminal,
+  CpuIcon, ChartSpline, DecimalsArrowRight, BrainCircuit, BotIcon,
+  ChartScatter, ChartPie, Binary, PiIcon, Sigma, Wrench,
+  Code, SquareTerminal, DatabaseZap, CardSim
 } from "lucide-react"
 import { Section } from "@/components/Section"
 import { SectionPrompt } from "@/components/text/section-prompt"
@@ -17,12 +18,26 @@ const categories = [
     icon: "◆",
     skills: [
       { label: "FRONTEND", icon: Code2, value: "HTML, CSS, Tailwind CSS, Javascript, TypeScript, Astro, React, Next.js, Vite" },
-      { label: "BACKEND", icon: Server, value: "Javascript, TypeScript, Python, Java, C#, Node.js, Express.js, npm, pnpm" },
-      { label: "DATABASE", icon: Database, value: "PostgreSQL, MySQL, SQLite, MongoDB, Supabase, Firebase" },
+      { label: "BACKEND", icon: Server, value: "Javascript, TypeScript, Java, C#, .NET, Node.js, Express.js, npm, pnpm" },
+      { label: "DATABASE", icon: Database, value: "PostgreSQL, MySQL, SQLite, Drizzle ORM, MongoDB, Firestore" },
       { label: "MOBILE", icon: TabletSmartphone, value: "Android Studio, Kotlin, Gradle, Jetpack Compose, Material Design" },
-      { label: "DEVOPS", icon: Workflow, value: "Git, Git Flow, GitHub, GitHub Actions, CI/CD Pipelines" },
-      { label: "CLOUD_PLATFORMS", icon: Cloud, value: "Netlify, Supabase, Firebase" },
+      { label: "DESIGN", icon: Palette, value: "Responsive Design, Accessibility (WCAG), Figma, CSS Grid/Flexbox" },
+      { label: "DEVOPS", icon: Workflow, value: "CI/CD Pipelines, GitHub Actions, Linux, Bash" },
+      { label: "CLOUD_PLATFORMS", icon: Cloud, value: "Netlify, Supabase, Firebase, Render" },
       { label: "APIs", icon: MonitorCloud, value: "REST, Postman" },
+    ],
+  },
+    {
+    id: "ENGINEERING",
+    label: "ENGINEERING",
+    icon: "◆",
+    skills: [
+      { label: "VERSION_CONTROL", icon: GitMerge, value: "Git, Git Flow, Git Tagging, GitHub, GitLab"},
+      { label: "TESTING", icon: FlaskConical, value: "Unit / Integration / End-to-end, PyTest, Vitest, JUnit, Playwright"},
+      { label: "SECURITY", icon: LockKeyhole, value: "Authentication (OAuth, JWT), Input Validation, SQL Injection Prevention" },
+      { label: "ARCHITECTURE", icon: House, value: "MVC/MVVM, Monolith, Microservices, Serverless" },
+      { label: "METHODOLOGIES", icon: GraduationCap, value: "Git Flow, Agile, Scrum, Kanban" },
+      { label: "CLI_TOOLS", icon: Terminal, value: "Lazygit, Neovim, Vim, tmux" },
     ],
   },
   {
@@ -30,10 +45,10 @@ const categories = [
     label: "ML_AND_AI",
     icon: "◆",
     skills: [
-      { label: "LANGUAGES", icon: BookType, value: "Python, R" },
-      { label: "FRAMEWORKS", icon: CpuIcon, value: "TensorFlow, PyTorch, Keras, SciPy, Scikit-learn" },
-      { label: "ML_METHODS", icon: ChartSpline, value: "Linear Regression, Neural Networks, K-Means Clustering, PCA" },
-      { label: "AI_METHODS", icon: BrainCircuit, value: "Natural Language Processing, Computer Vision, Reinforcement Learning" },
+      { label: "FRAMEWORKS", icon: CpuIcon, value: "TensorFlow, PyTorch, Keras, SciPy, Scikit-learn, Hugging Face" },
+      { label: "ML_MATHEMATICS", icon: DecimalsArrowRight, value: "Gradient Descent, Backpropagation, Matrix Operations, Probability Distributions" },
+      { label: "ML_METHODS", icon: ChartSpline, value: "Linear Regression, Neural Networks, K-Means Clustering, PCA, Decision Trees" },
+      { label: "AI_METHODS", icon: BrainCircuit, value: "NLP, Embeddings, Computer Vision, Reinforcement Learning" },
       { label: "AI_CODING", icon: BotIcon, value: "Claude Code, GitHub Copilot, Opencode, LM Studio, Ollama, MCP Servers" },
     ],
   },
@@ -42,24 +57,24 @@ const categories = [
     label: "DATA_SCIENCE",
     icon: "◆",
     skills: [
-      { label: "LANGUAGES", icon: BookType, value: "Python, R, SQL" },
-      { label: "ANALYTICS", icon: ChartScatter, value: "Pandas, NumPy" },
+      { label: "ANALYTICS", icon: ChartScatter, value: "Pandas, NumPy, StatsModels" },
       { label: "VISUALIZATION", icon: ChartPie, value: "Matplotlib, Seaborn, Plotly, ggplot2" },
-      { label: "MATHEMATICS", icon: PiIcon, value: "Linear Algebra, Vectors, Matrices, Calculus" },
-      { label: "STATISTICS", icon: Sigma, value: "Hypothesis Testing, Probability, Regression Analysis" },
+      { label: "LINEAR_ALGEBRA", icon: Binary, value: "Vectors, Matrices, Matrix Decomposition, Eigenvalues/Eigenvectors" },
+      { label: "APPLIED_MATH", icon: PiIcon, value: "Calculus, Numerical Methods, Optimization, Interpolation, Graph Theory" },
+      { label: "STATISTICS", icon: Sigma, value: "Hypothesis Testing, Probability, Regression Analysis, Time Series Analysis" },
       { label: "TOOLS", icon: Wrench, value: "Jupyter Notebooks, R Studio" },
     ],
   },
   {
-    id: "OTHER",
-    label: "OTHER",
+    id: "LANGUAGES",
+    label: "LANGUAGES",
     icon: "◆",
     skills: [
-      { label: "PROGRAMMING_LANGUAGES", icon: BookType, value: "Python, C, C#, Java, Kotlin, SQL, Pine Script, Bash" },
-      { label: "TESTING", icon: FlaskConical, value: "Unit / Integration / End-to-end, PyTest, Vitest, JUnit, Playwright"},
-      { label: "DESIGN", icon: Palette, value: "Figma, CSS Grid/Flexbox" },
-      { label: "CLI_TOOLS", icon: Terminal, value: "Lazygit, Neovim, Vim, tmux" },
-      { label: "METHODOLOGIES", icon: GraduationCap, value: "Git Flow, Agile, Scrum" },
+      { label: "PROGRAMMING_LANGUAGES", icon: Code, value: "Python, C, JavaScript, TypeScript, Java, Kotlin, C#, R" },
+      { label: "SCRIPTING_LANGUAGES", icon: SquareTerminal, value: "Bash, PowerShell, Pine Script"},
+      { label: "QUERY_LANGUAGES", icon: DatabaseZap, value: "SQL" },
+      { label: "MARKUP_LANGUAGES", icon: Code2, value: "HTML, Markdown, MDX, XML" },
+      { label: "DATA_FORMATS", icon: CardSim, value: "CSV, JSON, YAML, TOML" },
     ],
   },
 ]
@@ -132,7 +147,7 @@ export function Skills() {
       </div>
 
       {/* Skills list */}
-      <div key={fadeKey} className="min-h-88 space-y-8 ml-4 pl-6 border-l-2 border-dashed border-border/50">
+      <div key={fadeKey} className="space-y-8 ml-4 pl-6 border-l-2 border-dashed border-border/50">
         <div className="animate-fade-in-up">
           {active.skills.map((skill) => {
             const Icon = skill.icon
