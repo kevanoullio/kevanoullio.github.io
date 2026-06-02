@@ -145,3 +145,21 @@ body {
 .fade-in {
   animation: fade-in-up 0.6s ease-out both;
 }
+
+/* Blinking terminal cursor block */
+@keyframes blink-block {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink-block {
+  animation: blink-block 1s step-end infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out both;
+}

@@ -52,7 +52,7 @@ export function ThemeToggle() {
         <ChevronRight className="h-4 w-4" />
       </Button>
 
-      <span className="ml-1 font-mono text-xs text-foreground/40">
+      <span className="hidden xl:flex mr-2 font-mono text-xs text-foreground/40">
         {permIndex + 1} / {PERMUTATIONS.length}
       </span>
     </div>

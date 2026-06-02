@@ -9,7 +9,7 @@ export function Section({ children, id, outerClassName = "", innerClassName = ""
   return (
     <section
       id={id}
-      className={`flex flex-col justify-center p-16 min-h-[64vh] max-w-6xl fade-in scroll-mt-0 relative ${outerClassName}`}
+      className={`flex flex-col justify-center my-16 px-12 md:px-16 min-h-[60vh] max-w-6xl fade-in scroll-mt-16 relative ${outerClassName}`}
     >
       <div className={`${innerClassName}`}>
         {children}

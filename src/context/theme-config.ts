@@ -42,7 +42,7 @@ export const applyThemeTokens = (
   const brighten = (l: number, amount: number) => Math.min(l + amount, 0.95)
 
   // Background / foreground
-  const bg = isDark ? "0.10 0.005 250" : "0.95 0.003 250"
+  const bg = isDark ? "0.22 0.002 250" : "0.95 0.003 267"
   const fg = isDark ? "0.95 0.005 250" : "0.20 0.008 250"
 
   root.style.setProperty("--background", `oklch(${bg})`)
