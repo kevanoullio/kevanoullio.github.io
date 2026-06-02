@@ -2,26 +2,27 @@ import { Send, Mail, MapPin } from "lucide-react"
 import { LuGithub, LuLinkedin } from "react-icons/lu"
 import { Button } from "@/components/ui/button"
 import { Section } from "@/components/Section"
+import { SectionPrompt } from "@/components/text/section-prompt"
+import { SectionTitle } from "@/components/text/section-title"
+import { SectionSubtitle } from "@/components/text/section-subtitle"
 
 const contactLinks = [
   { label: "EMAIL", icon: Mail, value: "kevanoullio@example.com", href: "mailto:kevanoullio@example.com" },
   { label: "GITHUB", icon: LuGithub, value: "@kevanoullio", href: "https://github.com/kevanoullio" },
-  { label: "LINKEDIN", icon: LuLinkedin, value: "Kevin Ulliac", href: "https://linkedin.com/in/kevanoullio" },
+  { label: "LINKEDIN", icon: LuLinkedin, value: "Kevin Ulliac", href: "https://linkedin.com/in/kevinulliac" },
   { label: "LOCATION", icon: MapPin, value: "Edmonton, AB, Canada", href: null },
 ]
 
 export function Contact() {
   return (
     <Section id="contact">
-      <section className="my-16 text-center">
-        <div className="mb-4 text-secondary text-sm tracking-widest uppercase">
-          {'// CONNECTION_REQUEST: INITIATED'}
-        </div>
-        <h1 className="mb-4 text-4xl font-bold text-secondary">Get In Touch</h1>
-        <p className="mx-auto max-w-2xl text-muted-foreground">
+      <div className="mb-16 text-center">
+        <SectionPrompt>// CONNECTION_REQUEST: initiated</SectionPrompt>
+        <SectionTitle>Get In Touch</SectionTitle>
+        <SectionSubtitle>
           Have a project in mind or just want to say hello? I'd love to hear from you.
-        </p>
-      </section>
+        </SectionSubtitle>
+      </div>
 
       <section className="my-16 grid md:grid-cols-2 gap-12">
         {/* Contact Form — Terminal Input Style */}
@@ -92,7 +93,7 @@ export function Contact() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground group-hover:text-secondary transition-colors text-sm"
+                      className="text-muted-foreground group-hover:text-primary transition-colors text-sm"
                     >
                       {link.value}
                     </a>

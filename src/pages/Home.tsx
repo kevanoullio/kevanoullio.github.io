@@ -2,6 +2,8 @@ import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Section } from "@/components/Section"
 import { TypingText } from "@/components/TypingText"
+import { SectionPrompt } from "@/components/text/section-prompt"
+import { SectionSubtitle } from "@/components/text/section-subtitle"
 
 export function Home() {
   return (
@@ -25,11 +27,11 @@ export function Home() {
 
         {/* Hero content */}
         <div className="flex-1 text-center lg:text-left">
-          <div className="mb-4 text-secondary text-sm tracking-widest uppercase">
-            {'// SYSTEM_BOOT: user_profile_loaded'}
-          </div>
-          <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            <span className="text-secondary">{'>'}</span>{' '}
+          <SectionPrompt>
+            // SYSTEM_BOOT: user_profile_loaded
+          </SectionPrompt>
+          <h1 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            <span className="text-secondary">{'> '}</span>
             <span className="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
               <TypingText
                 text="Kevin Ulliac"
@@ -38,10 +40,10 @@ export function Home() {
               />
             </span>
           </h1>
-          <p className="mx-auto md:mx-0 mb-8 max-w-2xl text-lg text-muted-foreground sm:text-xl">
+          <SectionSubtitle>
             A passionate software developer crafting elegant solutions to complex problems.
             I love building applications that make a difference.
-          </p>
+          </SectionSubtitle>
           <div className="flex flex-col items-center lg:items-start gap-4">
             <Button theme="solid-primary" size="lg">
               <a href="#projects" className="flex items-center gap-2">
