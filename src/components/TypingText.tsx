@@ -67,7 +67,7 @@ export function TypingText({
       {displayed}
       {!done && (
         <span
-          className="inline-block w-[2px] h-[1em] bg-primary ml-[1px] align-middle"
+          className="inline-block w-0.5 h-[1em] bg-primary ml-px align-middle"
           style={{
             animation: "blink-caret 0.75s step-end infinite",
           }}

@@ -43,7 +43,7 @@ export function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-1000 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+    <nav className="sticky top-0 z-2000 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="mx-auto flex h-16 w-full max-w-screen-2xl items-center justify-between px-4">
         {/* Brand */}
         <a

@@ -50,7 +50,7 @@ export function Footer() {
             <span className="text-secondary uppercase">{'© '}{currentYear} kevanoullio // all_rights_reserved</span>
           </p>
           <p className="mt-2 text-xs text-muted-foreground/60 tracking-widest uppercase">
-            built with react + vite + tailwind
+            built with react + vite + tailwind css + shadcn ui
           </p>
         </div>
       </div>

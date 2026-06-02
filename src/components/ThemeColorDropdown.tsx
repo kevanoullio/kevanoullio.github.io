@@ -38,7 +38,7 @@ export function ThemeColorDropdown() {
           <Palette className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="min-w-[13rem]">
+      <DropdownMenuContent align="end" className="min-w-52">
         <DropdownMenuLabel className="text-xs tracking-widest text-muted-foreground">
           Color Palette
         </DropdownMenuLabel>
