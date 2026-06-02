@@ -127,15 +127,13 @@ export function Skills() {
                 >
                   <span className="mr-2 opacity-60">{cat.icon}</span>
                   <span>{cat.label}</span>
-                  {isActive && (
-                    <span className="ml-1.5 inline-block w-2.5 h-4 bg-accent animate-blink-block" />
-                  )}
+                  <span className={`ml-1.5 inline-block w-2.5 h-4 bg-accent animate-blink-block ${isActive ? "" : "invisible"}`} />
                 </button>
               )
             })}
           </div>
           {/* Mobile/tablet: chevron carousel */}
-          <div className="lg:hidden flex items-center justify-between h-10 px-2">
+          <div className="lg:hidden flex items-center justify-between h-10 ">
             <button
               onClick={() => setActiveIndex((activeIndex - 1 + categories.length) % categories.length)}
               className="flex items-center justify-center w-10 h-8 text-accent hover:text-primary transition-colors"
@@ -143,7 +141,8 @@ export function Skills() {
             >
               <LuChevronLeft className="h-5 w-5" />
             </button>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 border-b-2 border-accent pb-0.5">
+              <span className="opacity-60">{categories[activeIndex].icon}</span>
               <span className="text-sm font-mono font-bold tracking-wider text-accent">
                 {categories[activeIndex].label}
               </span>
