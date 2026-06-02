@@ -63,7 +63,7 @@ export function Contact() {
                 placeholder="Type your message..."
               />
             </div>
-            <Button size="lg" variant="default" className="w-full border border-primary/50 hover:border-accent/50">
+            <Button theme="solid-primary" size="lg" className="w-full">
               <span className="flex items-center gap-2">
                 <Send className="h-4 w-4" />
                 <span>SEND_MESSAGE</span>

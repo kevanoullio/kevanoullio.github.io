@@ -23,10 +23,9 @@ export function ThemeModeDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="outline"
+          theme="outline"
           size="icon"
           aria-label="Toggle theme mode"
-          className="bg-background text-foreground border-border hover:border-secondary/60 hover:bg-muted hover:text-secondary"
         >
           {theme === "light" && <Sun className="h-4 w-4" />}
           {theme === "dark" && <Moon className="h-4 w-4" />}

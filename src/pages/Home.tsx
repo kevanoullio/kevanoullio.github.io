@@ -43,13 +43,13 @@ export function Home() {
             I love building applications that make a difference.
           </p>
           <div className="flex flex-col items-center lg:items-start gap-4">
-            <Button size="lg" variant="default" className="border border-primary/50 hover:border-accent/50">
+            <Button theme="solid-primary" size="lg">
               <a href="#projects" className="flex items-center gap-2">
                 <span>VIEW_WORK</span>
                 <ArrowRight className="h-4 w-4" />
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="border border-border hover:border-secondary/50">
+            <Button theme="outline" size="lg">
               <a href="#contact" className="flex items-center gap-2">
                 <span>GET_IN_TOUCH</span>
               </a>

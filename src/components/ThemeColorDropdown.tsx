@@ -30,7 +30,7 @@ export function ThemeColorDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="outline"
+          theme="outline"
           size="icon"
           aria-label="Select color palette"
           className="bg-background text-foreground border-border hover:border-secondary/60 hover:bg-muted hover:text-secondary"

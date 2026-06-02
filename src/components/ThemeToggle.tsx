@@ -2,6 +2,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useTheme } from "@/context/useTheme"
 import { PERMUTATIONS } from "@/context/theme-config"
 
+import { Button } from "@/components/ui/button";
+
 const ROLE_LABELS = ["PRIMARY", "SECONDARY", "ACCENT"] as const
 
 export function ThemeToggle() {
@@ -10,13 +12,14 @@ export function ThemeToggle() {
 
   return (
     <div className="flex items-center gap-1.5">
-      <button
+      <Button
+        theme="ghost"
         onClick={prev}
         aria-label="Previous color theme"
         className="flex h-8 w-8 items-center justify-center rounded-md text-foreground/60 hover:text-secondary hover:bg-muted transition-colors"
       >
         <ChevronLeft className="h-4 w-4" />
-      </button>
+      </Button>
 
       <div className="flex items-center gap-2 px-2 py-1">
         {ROLE_LABELS.map((role) => {
@@ -40,13 +43,14 @@ export function ThemeToggle() {
         })}
       </div>
 
-      <button
+      <Button
+        theme="ghost"
         onClick={next}
         aria-label="Next color theme"
         className="flex h-8 w-8 items-center justify-center rounded-md text-foreground/60 hover:text-secondary hover:bg-muted transition-colors"
       >
         <ChevronRight className="h-4 w-4" />
-      </button>
+      </Button>
 
       <span className="ml-1 font-mono text-xs text-foreground/40">
         {permIndex + 1} / {PERMUTATIONS.length}

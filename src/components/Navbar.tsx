@@ -90,7 +90,7 @@ export function Navbar() {
           <ThemeColorDropdown />
           <ThemeModeDropdown />
           <Button
-            variant="ghost"
+            theme="ghost"
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
