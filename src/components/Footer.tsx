@@ -1,5 +1,4 @@
-import { Mail } from "lucide-react"
-import { LuGithub, LuLinkedin } from "react-icons/lu"
+import { LuMail, LuGithub, LuLinkedin } from "react-icons/lu"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -39,7 +38,7 @@ export function Footer() {
               className="text-muted-foreground transition-colors hover:text-secondary"
               aria-label="Email"
             >
-              <Mail className="h-5 w-5" />
+              <LuMail className="h-5 w-5" />
             </a>
           </div>
         </div>

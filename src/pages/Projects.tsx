@@ -3,8 +3,7 @@ import { ImagePopup } from "@/components/ImagePopup"
 import { SectionPrompt } from "@/components/text/section-prompt"
 import { SectionSubtitle } from "@/components/text/section-subtitle"
 import { SectionTitle } from "@/components/text/section-title"
-import { ExternalLink, Folder } from "lucide-react"
-import { LuGithub } from "react-icons/lu"
+import { LuFolder, LuGithub, LuExternalLink } from "react-icons/lu"
 import { useState } from "react"
 
 const projects = [
@@ -79,7 +78,7 @@ export function Projects() {
                 </span>
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <Folder className="h-4 w-4 text-accent" />
+                    <LuFolder className="h-4 w-4 text-accent" />
                     <h3 className="text-xl font-bold text-secondary group-hover:text-primary transition-colors">
                       {`>> ${project.title}`}
                     </h3>
@@ -126,7 +125,7 @@ export function Projects() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-1 text-muted-foreground hover:text-secondary transition-colors"
                       >
-                        <ExternalLink className="h-3 w-3" />
+                        <LuExternalLink className="h-3 w-3" />
                         <span>Live</span>
                       </a>
                     )}

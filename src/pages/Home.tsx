@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react"
+import { LuArrowRight } from "react-icons/lu"
 import { Button } from "@/components/ui/button"
 import { Section } from "@/components/Section"
 import { TypingText } from "@/components/TypingText"
@@ -48,7 +48,7 @@ export function Home() {
             <Button theme="solid-primary" size="lg">
               <a href="#projects" className="flex items-center gap-2">
                 <span>VIEW_WORK</span>
-                <ArrowRight className="h-4 w-4" />
+                <LuArrowRight className="h-4 w-4" />
               </a>
             </Button>
             <Button theme="outline" size="lg">

@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react"
 import type { FormEvent, ChangeEvent } from "react"
-import { Send, Mail, MapPin } from "lucide-react"
-import { LuGithub, LuLinkedin } from "react-icons/lu"
+import { LuMail, LuGithub, LuLinkedin, LuMapPin, LuSend } from "react-icons/lu"
 import { Button } from "@/components/ui/button"
 import { Section } from "@/components/Section"
 import { SectionPrompt } from "@/components/text/section-prompt"
@@ -10,10 +9,10 @@ import { SectionSubtitle } from "@/components/text/section-subtitle"
 import { Toast } from "@/components/Toast"
 
 const contactLinks = [
-  { label: "EMAIL", icon: Mail, value: "kevanoullio@outlook.com", href: "mailto:kevanoullio@outlook.com" },
+  { label: "EMAIL", icon: LuMail, value: "kevanoullio@outlook.com", href: "mailto:kevanoullio@outlook.com" },
   { label: "GITHUB", icon: LuGithub, value: "@kevanoullio", href: "https://github.com/kevanoullio" },
   { label: "LINKEDIN", icon: LuLinkedin, value: "Kevin Ulliac", href: "https://linkedin.com/in/kevinulliac" },
-  { label: "LOCATION", icon: MapPin, value: "Edmonton, AB, Canada", href: null },
+  { label: "LOCATION", icon: LuMapPin, value: "Edmonton, AB, Canada", href: null },
 ]
 
 interface FormErrors {
@@ -151,7 +150,7 @@ export function Contact() {
                   </>
                 ) : (
                   <>
-                    <Send className="h-4 w-4" />
+                    <LuSend className="h-4 w-4" />
                     <span>SEND_MESSAGE</span>
                   </>
                 )}

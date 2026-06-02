@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { X } from "lucide-react"
+import { LuX } from "react-icons/lu"
 
 type ToastType = "success" | "error"
 
@@ -41,7 +41,7 @@ export function Toast({ message, type, onClose, duration = 5000 }: ToastProps) {
         className="text-white/70 hover:text-white transition-colors"
         aria-label="Close"
       >
-        <X className="h-4 w-4" />
+        <LuX className="h-4 w-4" />
       </button>
       <style>{`
         @keyframes slideIn {

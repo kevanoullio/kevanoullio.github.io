@@ -3,7 +3,7 @@ import { Button } from "./ui/button"
 import { ThemeToggle } from "./ThemeToggle"
 import { ThemeColorDropdown } from "./ThemeColorDropdown"
 import { ThemeModeDropdown } from "./ThemeModeDropdown"
-import { Menu, X } from "lucide-react"
+import { LuMenu, LuX } from "react-icons/lu"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
@@ -96,7 +96,7 @@ export function Navbar() {
             aria-label="Toggle menu"
             className="border border-primary/20 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileMenuOpen ? <LuX className="h-5 w-5" /> : <LuMenu className="h-5 w-5" />}
           </Button>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Sun, Moon, Monitor } from "lucide-react"
+import { LuSun, LuMoon, LuMonitor } from "react-icons/lu"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -11,9 +11,9 @@ import { useTheme } from "@/context/useTheme"
 type Mode = "light" | "dark" | "system"
 
 const MODES: { value: Mode; label: string; icon: React.ReactNode }[] = [
-  { value: "light", label: "Light", icon: <Sun className="h-4 w-4" /> },
-  { value: "dark", label: "Dark", icon: <Moon className="h-4 w-4" /> },
-  { value: "system", label: "System", icon: <Monitor className="h-4 w-4" /> },
+  { value: "light", label: "Light", icon: <LuSun className="h-4 w-4" /> },
+  { value: "dark", label: "Dark", icon: <LuMoon className="h-4 w-4" /> },
+  { value: "system", label: "System", icon: <LuMonitor className="h-4 w-4" /> },
 ]
 
 export function ThemeModeDropdown() {
@@ -27,9 +27,9 @@ export function ThemeModeDropdown() {
           size="icon"
           aria-label="Toggle theme mode"
         >
-          {theme === "light" && <Sun className="h-4 w-4" />}
-          {theme === "dark" && <Moon className="h-4 w-4" />}
-          {theme === "system" && <Monitor className="h-4 w-4" />}
+          {theme === "light" && <LuSun className="h-4 w-4" />}
+          {theme === "dark" && <LuMoon className="h-4 w-4" />}
+          {theme === "system" && <LuMonitor className="h-4 w-4" />}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

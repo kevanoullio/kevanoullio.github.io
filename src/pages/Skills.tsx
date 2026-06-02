@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import {
-  Code2, Server, Database, TabletSmartphone, Palette, Workflow, Cloud, MonitorCloud,
-  GitMerge, FlaskConical, LockKeyhole, House, GraduationCap, Terminal,
-  CpuIcon, ChartSpline, DecimalsArrowRight, BrainCircuit, BotIcon,
-  ChartScatter, ChartPie, Binary, PiIcon, Sigma, Wrench,
-  Code, SquareTerminal, DatabaseZap, CardSim
-} from "lucide-react"
+  LuCodeXml, LuServer, LuDatabase, LuTabletSmartphone, LuPalette, LuWorkflow, LuCloud, LuNetwork,
+  LuGitMerge, LuFlaskConical, LuLockKeyhole, LuFolderTree, LuGraduationCap, LuTerminal,
+  LuCpu, LuChartSpline, LuChartScatter, LuBrainCircuit, LuBot,
+  LuChartArea, LuChartPie, LuPi, LuSigma, LuWrench,
+  LuCode, LuSquareTerminal, LuDatabaseZap, LuFileJson2
+} from "react-icons/lu"
+import { TbMatrix } from "react-icons/tb"
 import { Section } from "@/components/Section"
 import { SectionPrompt } from "@/components/text/section-prompt"
 import { SectionTitle } from "@/components/text/section-title"
@@ -17,14 +18,14 @@ const categories = [
     label: "WEB_DEVELOPMENT",
     icon: "◆",
     skills: [
-      { label: "FRONTEND", icon: Code2, value: "HTML, CSS, Tailwind CSS, Javascript, TypeScript, Astro, React, Next.js, Vite" },
-      { label: "BACKEND", icon: Server, value: "Javascript, TypeScript, Java, C#, .NET, Node.js, Express.js, npm, pnpm" },
-      { label: "DATABASE", icon: Database, value: "PostgreSQL, MySQL, SQLite, Drizzle ORM, MongoDB, Firestore" },
-      { label: "MOBILE", icon: TabletSmartphone, value: "Android Studio, Kotlin, Gradle, Jetpack Compose, Material Design" },
-      { label: "DESIGN", icon: Palette, value: "Responsive Design, Accessibility (WCAG), Figma, CSS Grid/Flexbox" },
-      { label: "DEVOPS", icon: Workflow, value: "CI/CD Pipelines, GitHub Actions, Linux, Bash" },
-      { label: "CLOUD_PLATFORMS", icon: Cloud, value: "Netlify, Supabase, Firebase, Render" },
-      { label: "APIs", icon: MonitorCloud, value: "REST, Postman" },
+      { label: "FRONTEND", icon: LuCodeXml, value: "HTML, CSS, Tailwind CSS, Javascript, TypeScript, Astro, React, Next.js, Vite" },
+      { label: "BACKEND", icon: LuServer, value: "Javascript, TypeScript, Java, C#, .NET, Node.js, Express.js, npm, pnpm" },
+      { label: "DATABASE", icon: LuDatabase, value: "PostgreSQL, MySQL, SQLite, Drizzle ORM, MongoDB, Firestore" },
+      { label: "MOBILE", icon: LuTabletSmartphone, value: "Android Studio, Kotlin, Gradle, Jetpack Compose, Material Design" },
+      { label: "DESIGN", icon: LuPalette, value: "Responsive Design, Accessibility (WCAG), Figma, CSS Grid/Flexbox" },
+      { label: "DEVOPS", icon: LuWorkflow, value: "CI/CD Pipelines, GitHub Actions, Linux, Bash" },
+      { label: "CLOUD_PLATFORMS", icon: LuCloud, value: "Netlify, Supabase, Firebase, Render" },
+      { label: "APIs", icon: LuNetwork, value: "REST, Postman" },
     ],
   },
     {
@@ -32,12 +33,12 @@ const categories = [
     label: "ENGINEERING",
     icon: "◆",
     skills: [
-      { label: "VERSION_CONTROL", icon: GitMerge, value: "Git, Git Flow, Git Tagging, GitHub, GitLab"},
-      { label: "TESTING", icon: FlaskConical, value: "Unit / Integration / End-to-end, PyTest, Vitest, JUnit, Playwright"},
-      { label: "SECURITY", icon: LockKeyhole, value: "Authentication (OAuth, JWT), Input Validation, SQL Injection Prevention" },
-      { label: "ARCHITECTURE", icon: House, value: "MVC/MVVM, Monolith, Microservices, Serverless" },
-      { label: "METHODOLOGIES", icon: GraduationCap, value: "Git Flow, Agile, Scrum, Kanban" },
-      { label: "CLI_TOOLS", icon: Terminal, value: "Lazygit, Neovim, Vim, tmux" },
+      { label: "VERSION_CONTROL", icon: LuGitMerge, value: "Git, Git Flow, Git Tagging, GitHub, GitLab"},
+      { label: "TESTING", icon: LuFlaskConical, value: "Unit / Integration / End-to-end, PyTest, Vitest, JUnit, Playwright"},
+      { label: "SECURITY", icon: LuLockKeyhole, value: "Authentication (OAuth, JWT), Input Validation, SQL Injection Prevention" },
+      { label: "ARCHITECTURE", icon: LuFolderTree, value: "MVC/MVVM, Monolith, Microservices, Serverless" },
+      { label: "METHODOLOGIES", icon: LuGraduationCap, value: "Git Flow, Agile, Scrum, Kanban" },
+      { label: "CLI_TOOLS", icon: LuTerminal, value: "Lazygit, Neovim, Vim, tmux" },
     ],
   },
   {
@@ -45,11 +46,11 @@ const categories = [
     label: "ML_AND_AI",
     icon: "◆",
     skills: [
-      { label: "FRAMEWORKS", icon: CpuIcon, value: "TensorFlow, PyTorch, Keras, SciPy, Scikit-learn, Hugging Face" },
-      { label: "ML_MATHEMATICS", icon: DecimalsArrowRight, value: "Gradient Descent, Backpropagation, Matrix Operations, Probability Distributions" },
-      { label: "ML_METHODS", icon: ChartSpline, value: "Linear Regression, Neural Networks, K-Means Clustering, PCA, Decision Trees" },
-      { label: "AI_METHODS", icon: BrainCircuit, value: "NLP, Embeddings, Computer Vision, Reinforcement Learning" },
-      { label: "AI_CODING", icon: BotIcon, value: "Claude Code, GitHub Copilot, Opencode, LM Studio, Ollama, MCP Servers" },
+      { label: "FRAMEWORKS", icon: LuCpu, value: "TensorFlow, PyTorch, Keras, SciPy, Scikit-learn, Hugging Face" },
+      { label: "ML_MATHEMATICS", icon: LuChartSpline, value: "Gradient Descent, Backpropagation, Matrix Operations, Probability Distributions" },
+      { label: "ML_METHODS", icon: LuChartScatter, value: "Linear Regression, Neural Networks, K-Means Clustering, PCA, Decision Trees" },
+      { label: "AI_METHODS", icon: LuBrainCircuit, value: "NLP, Embeddings, Computer Vision, Reinforcement Learning" },
+      { label: "AI_CODING", icon: LuBot, value: "Claude LuCode, GitHub Copilot, Opencode, LM Studio, Ollama, MCP Servers" },
     ],
   },
   {
@@ -57,12 +58,12 @@ const categories = [
     label: "DATA_SCIENCE",
     icon: "◆",
     skills: [
-      { label: "ANALYTICS", icon: ChartScatter, value: "Pandas, NumPy, StatsModels" },
-      { label: "VISUALIZATION", icon: ChartPie, value: "Matplotlib, Seaborn, Plotly, ggplot2" },
-      { label: "LINEAR_ALGEBRA", icon: Binary, value: "Vectors, Matrices, Matrix Decomposition, Eigenvalues/Eigenvectors" },
-      { label: "APPLIED_MATH", icon: PiIcon, value: "Calculus, Numerical Methods, Optimization, Interpolation, Graph Theory" },
-      { label: "STATISTICS", icon: Sigma, value: "Hypothesis Testing, Probability, Regression Analysis, Time Series Analysis" },
-      { label: "TOOLS", icon: Wrench, value: "Jupyter Notebooks, R Studio" },
+      { label: "ANALYTICS", icon: LuChartArea, value: "Pandas, NumPy, StatsModels" },
+      { label: "VISUALIZATION", icon: LuChartPie, value: "Matplotlib, Seaborn, Plotly, ggplot2" },
+      { label: "LINEAR_ALGEBRA", icon: TbMatrix, value: "Vectors, Matrices, Matrix Decomposition, Eigenvalues/Eigenvectors" },
+      { label: "APPLIED_MATH", icon: LuPi, value: "Calculus, Numerical Methods, Optimization, Interpolation, Graph Theory" },
+      { label: "STATISTICS", icon: LuSigma, value: "Hypothesis Testing, Probability, Regression Analysis, Time Series Analysis" },
+      { label: "TOOLS", icon: LuWrench, value: "Jupyter Notebooks, R Studio" },
     ],
   },
   {
@@ -70,11 +71,11 @@ const categories = [
     label: "LANGUAGES",
     icon: "◆",
     skills: [
-      { label: "PROGRAMMING_LANGUAGES", icon: Code, value: "Python, C, JavaScript, TypeScript, Java, Kotlin, C#, R" },
-      { label: "SCRIPTING_LANGUAGES", icon: SquareTerminal, value: "Bash, PowerShell, Pine Script"},
-      { label: "QUERY_LANGUAGES", icon: DatabaseZap, value: "SQL" },
-      { label: "MARKUP_LANGUAGES", icon: Code2, value: "HTML, Markdown, MDX, XML" },
-      { label: "DATA_FORMATS", icon: CardSim, value: "CSV, JSON, YAML, TOML" },
+      { label: "PROGRAMMING_LANGUAGES", icon: LuCode, value: "Python, C, JavaScript, TypeScript, Java, Kotlin, C#, R" },
+      { label: "SCRIPTING_LANGUAGES", icon: LuSquareTerminal, value: "Bash, PowerShell, Pine Script"},
+      { label: "QUERY_LANGUAGES", icon: LuDatabaseZap, value: "SQL" },
+      { label: "MARKUP_LANGUAGES", icon: LuCodeXml, value: "HTML, Markdown, MDX, XML" },
+      { label: "DATA_FORMATS", icon: LuFileJson2, value: "CSV, JSON, YAML, TOML" },
     ],
   },
 ]

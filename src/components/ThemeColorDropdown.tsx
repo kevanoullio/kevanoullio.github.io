@@ -1,4 +1,4 @@
-import { Palette } from "lucide-react"
+import { LuPalette } from "react-icons/lu"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -35,7 +35,7 @@ export function ThemeColorDropdown() {
           aria-label="Select color palette"
           className="bg-background text-foreground border-border hover:border-secondary/60 hover:bg-muted hover:text-secondary"
         >
-          <Palette className="h-4 w-4" />
+          <LuPalette className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-52">

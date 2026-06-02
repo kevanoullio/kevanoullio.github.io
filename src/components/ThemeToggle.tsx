@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { useTheme } from "@/context/useTheme"
 import { PERMUTATIONS } from "@/context/theme-config"
 
@@ -18,7 +18,7 @@ export function ThemeToggle() {
         aria-label="Previous color theme"
         className="flex h-8 w-8 items-center justify-center rounded-md text-foreground/60 hover:text-secondary hover:bg-muted transition-colors"
       >
-        <ChevronLeft className="h-4 w-4" />
+        <LuChevronLeft className="h-4 w-4" />
       </Button>
 
       <div className="flex items-center gap-2 px-2 py-1">
@@ -49,7 +49,7 @@ export function ThemeToggle() {
         aria-label="Next color theme"
         className="flex h-8 w-8 items-center justify-center rounded-md text-foreground/60 hover:text-secondary hover:bg-muted transition-colors"
       >
-        <ChevronRight className="h-4 w-4" />
+        <LuChevronRight className="h-4 w-4" />
       </Button>
 
       <span className="hidden xl:flex mr-2 font-mono text-xs text-foreground/40">
