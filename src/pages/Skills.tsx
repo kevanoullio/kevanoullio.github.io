@@ -4,7 +4,8 @@ import {
   LuGitMerge, LuFlaskConical, LuLockKeyhole, LuFolderTree, LuGraduationCap, LuTerminal,
   LuCpu, LuChartSpline, LuChartScatter, LuBrainCircuit, LuBot,
   LuChartArea, LuChartPie, LuPi, LuSigma, LuWrench,
-  LuCode, LuSquareTerminal, LuDatabaseZap, LuFileJson2
+  LuCode, LuSquareTerminal, LuDatabaseZap, LuFileJson2,
+  LuChevronLeft, LuChevronRight
 } from "react-icons/lu"
 import { TbMatrix } from "react-icons/tb"
 import { Section } from "@/components/Section"
@@ -93,7 +94,7 @@ export function Skills() {
   return (
     <Section
       id="skills"
-      outerClassName="min-w-64 md:min-w-128 lg:min-w-232"
+      outerClassName="w-full"
     >
       <div className="mb-16 text-center">
         <SectionPrompt>// LOG_ARCHIVE: skill_entries</SectionPrompt>
@@ -107,7 +108,8 @@ export function Skills() {
       {/* Tab bar */}
       <div className="mb-6">
         <div className="bg-muted/30 border border-border rounded-t-lg px-4 overflow-x-auto">
-          <div className="flex items-center h-10 gap-0">
+          {/* Desktop: all tabs visible */}
+          <div className="hidden lg:flex items-center h-10 gap-0">
             {categories.map((cat, i) => {
               const isActive = i === activeIndex
               return (
@@ -132,11 +134,34 @@ export function Skills() {
               )
             })}
           </div>
+          {/* Mobile/tablet: chevron carousel */}
+          <div className="lg:hidden flex items-center justify-between h-10 px-2">
+            <button
+              onClick={() => setActiveIndex((activeIndex - 1 + categories.length) % categories.length)}
+              className="flex items-center justify-center w-10 h-8 text-accent hover:text-primary transition-colors"
+              aria-label="Previous tab"
+            >
+              <LuChevronLeft className="h-5 w-5" />
+            </button>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-mono font-bold tracking-wider text-accent">
+                {categories[activeIndex].label}
+              </span>
+              <span className="inline-block w-2 h-4 bg-accent animate-blink-block" />
+            </div>
+            <button
+              onClick={() => setActiveIndex((activeIndex + 1) % categories.length)}
+              className="flex items-center justify-center w-10 h-8 text-accent hover:text-primary transition-colors"
+              aria-label="Next tab"
+            >
+              <LuChevronRight className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Category header */}
-      <div className="mb-4 ml-4">
+      <div className="flex flex-col mb-4 ml-4 sm:flex-row sm:items-center">
         <span className="text-accent font-bold tracking-widest text-lg">
           {"["}
           {active.label}
@@ -158,13 +183,15 @@ export function Skills() {
                 className="mb-4 group transition-colors hover:text-secondary"
               >
                 <div className="flex items-center gap-3 mb-1">
-                  <Icon className="h-5 w-5 text-accent" />
+                  <Icon className="h-5 w-5 text-accent shrink-0" />
                   <span className="text-lg font-bold tracking-wider text-secondary">
                     {skill.label}
                   </span>
-                  <span className="text-muted-foreground text-sm">
+                  <span className="text-muted-foreground text-sm inline">
                     {'::'}
                   </span>
+                </div>
+                <div className="sm:hidden flex items-center gap-2 mb-1">
                 </div>
                 <p className="text-muted-foreground group-hover:text-primary transition-colors">
                   {skill.value}
