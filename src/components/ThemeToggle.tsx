@@ -1,5 +1,5 @@
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
-import { useTheme } from "@/context/useTheme"
+import { useTheme } from "@/context/theme-context"
 import { PERMUTATIONS } from "@/context/theme-config"
 
 import { Button } from "@/components/ui/button";

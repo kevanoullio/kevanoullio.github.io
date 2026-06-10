@@ -8,7 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useTheme } from "@/context/useTheme"
+import { useTheme } from "@/context/theme-context"
 import { PERMUTATIONS } from "@/context/theme-config"
 
 const COLOR_LABELS: Record<string, string> = {

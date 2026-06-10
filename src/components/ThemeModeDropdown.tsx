@@ -6,11 +6,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useTheme } from "@/context/useTheme"
+import { type ThemeMode, useTheme } from "@/context/theme-context"
 
-type Mode = "light" | "dark" | "system"
-
-const MODES: { value: Mode; label: string; icon: React.ReactNode }[] = [
+const MODES: { value: ThemeMode; label: string; icon: React.ReactNode }[] = [
   { value: "light", label: "Light", icon: <LuSun className="h-4 w-4" /> },
   { value: "dark", label: "Dark", icon: <LuMoon className="h-4 w-4" /> },
   { value: "system", label: "System", icon: <LuMonitor className="h-4 w-4" /> },

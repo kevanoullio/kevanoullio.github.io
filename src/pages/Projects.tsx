@@ -1,21 +1,21 @@
+import { useState } from "react"
+import { LuFolder, LuGithub, LuExternalLink } from "react-icons/lu"
 import { Section } from "@/components/Section"
 import { ImagePopup } from "@/components/ImagePopup"
 import { SectionPrompt } from "@/components/text/section-prompt"
 import { SectionSubtitle } from "@/components/text/section-subtitle"
 import { SectionTitle } from "@/components/text/section-title"
-import { LuFolder, LuGithub, LuExternalLink } from "react-icons/lu"
-import { useState } from "react"
 
 const projects = [
   {
-    title: "Vintique Sound (work in progress)",
+    title: "Vintique Sound",
     description: "A responsive mostly static website for my music business.",
     image: "/project_cards/vintique_sound_website-preview.png",
     tags: ["Website", "Astro", "React", "Tailwind CSS"],
     categories: ["Website", "Music", "Audio Engineering"],
     technologies: ["Astro", "TypeScript", "React", "Tailwind CSS", "PostgreSQL", "Drizzle"],
     role: "Sole Developer (all code)",
-    liveUrl: "https://vintiquesound.netlify.app/"
+    liveUrl: "https://www.vintiquesound.com/"
   },
   {
     title: "Vintique Sound (prototype)",
