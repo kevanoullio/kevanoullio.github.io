@@ -1,9 +1,7 @@
 import { useEffect, useState, useCallback, type ReactNode } from "react"
 
 import { applyThemeTokens, NUM_PERMUTATIONS } from "./theme-config"
-import { ThemeContext } from "./theme-context"
-
-type Mode = "light" | "dark" | "system"
+import { type ThemeMode, ThemeContext } from "./theme-context"
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [permIndex, setPermIndex] = useState<number>(() => {
@@ -19,9 +17,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return 0
   })
 
-  const [theme, setTheme] = useState<Mode>(() => {
+  const [theme, setTheme] = useState<ThemeMode>(() => {
     try {
-      const stored = localStorage.getItem("theme") as Mode
+      const stored = localStorage.getItem("theme") as ThemeMode
       if (stored && ["light", "dark", "system"].includes(stored)) return stored
     } catch {
       // ignore
