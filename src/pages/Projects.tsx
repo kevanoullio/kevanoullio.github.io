@@ -29,6 +29,16 @@ const projects = [
     liveUrl: "https://kevanoullio.github.io/vintique-sound-website-prototype/"
   },
   {
+    title: "Fat Tail Algo",
+    description: "A responsive React based website for my trading and investing business.",
+    image: "/project_cards/fat_tail_algo_website-preview.png",
+    tags: ["Website", "React", "TypeScript", "Tailwind CSS", "Vite"],
+    categories: ["Website", "Trading", "Investing"],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    role: "Sole Developer (all code)",
+    liveUrl: "https://fattailalgo.dev"
+  },
+  {
     title: "House of Tutor",
     description: "A tutoring mobile app for tutors and students, developed for Android.",
     image: "/project_cards/house_of_tutor-preview.png",
