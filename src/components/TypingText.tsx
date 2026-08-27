@@ -19,60 +19,72 @@ export function TypingText({
   const [done, setDone] = useState(false)
   const [visible, setVisible] = useState(false)
   const ref = useRef<HTMLSpanElement>(null)
-  const observer = useRef<IntersectionObserver | null>(null)
+  const onCompleteRef = useRef(onComplete)
+  const speedRef = useRef(speed)
 
   useEffect(() => {
-    if (!ref.current) return
+    onCompleteRef.current = onComplete
+  }, [onComplete])
 
-    observer.current = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !visible) {
+  useEffect(() => {
+    speedRef.current = speed
+  }, [speed])
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el || visible) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
           setVisible(true)
+          observer.disconnect()
         }
       },
       { threshold: 0.3 }
     )
 
-    observer.current.observe(ref.current)
-    return () => observer.current?.disconnect()
+    observer.observe(el)
+    return () => observer.disconnect()
   }, [visible])
 
   useEffect(() => {
     if (!visible) return
 
-    const timeout = setTimeout(() => {
-      let i = 0
-      const interval = setInterval(() => {
-        if (i <= text.length) {
-          setDisplayed(text.slice(0, i))
-          i++
-        } else {
-          clearInterval(interval)
+    let cancelled = false
+    let timer: ReturnType<typeof setTimeout>
+
+    const type = (i: number, wait: number) => {
+      if (cancelled) return
+      timer = setTimeout(() => {
+        if (i > text.length) {
           setDone(true)
-          onComplete?.()
+          onCompleteRef.current?.()
+          return
         }
-      }, speed)
+        setDisplayed(text.slice(0, i))
+        type(i + 1, speedRef.current)
+      }, wait)
+    }
 
-      return () => clearInterval(interval)
-    }, delay)
+    type(0, delay)
 
-    return () => clearTimeout(timeout)
-  }, [visible, text, speed, delay, onComplete])
+    return () => {
+      cancelled = true
+      clearTimeout(timer)
+    }
+  }, [visible, text, delay])
 
   return (
-    <span
-      ref={ref}
-      className={`inline-block ${className}`}
-    >
+    <span ref={ref} className={`inline-block ${className}`}>
       {displayed}
-      {!done && (
-        <span
-          className="inline-block w-0.5 h-[1em] bg-primary ml-px align-middle"
-          style={{
-            animation: "blink-caret 0.75s step-end infinite",
-          }}
-        />
-      )}
+      <span
+        aria-hidden="true"
+        className={`ml-px inline-block h-[1em] w-0.5 bg-primary align-middle ${
+          done ? "invisible" : ""
+        }`}
+        style={{ animation: "blink-caret 0.75s step-end infinite" }}
+      />
     </span>
   )
 }
